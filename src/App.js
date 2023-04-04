@@ -1,4 +1,4 @@
-const CourseList = ({cursos}) => {
+export const CourseList = ({cursos}) => {
 
     const lista = <>
         <table>
