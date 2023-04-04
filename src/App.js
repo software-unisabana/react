@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+export const CourseList = ({cursos}) => {
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const lista = <>
+        <table>
+            <tr>
+                <th> ID </th>
+                <th> NOMBRE </th>
+                <th> DESCRIPCIÓN </th>
+            </tr>
+
+            {cursos.map(curso => {
+                return (
+                    <tr>
+                        <td> {curso.id} </td>
+                        <td>  {curso.nombre} </td>
+                        <td>  {curso.descripcion}</td>
+                    </tr>
+                )
+                
+            })}
+        </table>
+    </>
+    
+    return (lista)
+
 }
 
-export default App;
+CourseList.defaultProps = {
+cursos: [
+    {
+        id: 9,
+        nombre: 'Noveno',
+        descripcion:'Grado 9no'
+    },
+    {
+        id: 10,
+        nombre: 'Decimo',
+        descripcion:'Grado 10mo'
+    },
+    {
+        id: 11,
+        nombre: 'Once',
+        descripcion:'Grado 11vo'
+    }
+]
+}
