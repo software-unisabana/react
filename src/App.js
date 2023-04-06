@@ -61,19 +61,34 @@ export const CourseList = ({cursos}) => {
     }
 
     const Guardar = () => {
+
         const id = document.getElementById('GetId').value;
         const nombre = document.getElementById('GetNombre').value;
         const descripcion = document.getElementById('GetDescripcion').value;
 
+        let validacion = true;
+
         if ((id) && (nombre) && (descripcion)) {
 
-            cursos.push({id: id, nombre: nombre, descripcion: descripcion})
-            Actualizar()
+            cursos.forEach(curso => {
 
+                if (curso.id == id) {
+                    validacion = false;
+                }
+            })
+
+            if (validacion){
+
+                cursos.push({id: id, nombre: nombre, descripcion: descripcion})
+                Actualizar()
+
+            } else {
+                alert('Ese Id ya existe');
+            }
+            
         }else{
-            alert('Ingrese todos los datos')    
+            alert('Ingrese todos los datos');    
         }
-
     }
 
     const CourseItem = ({item}) => {
