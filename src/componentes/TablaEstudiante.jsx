@@ -5,9 +5,13 @@
 
 export const TablaEstudiante = ({ listaEstudiantes }) => {
 
-    const editar=()=>{
-        
+    const editar = () => {
+
     }
+    function deleteRow(event) {
+        const row = event.target.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+      }
     return (
         <>
             <table className="table">
@@ -26,7 +30,7 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
                             <td>{estudiante.nombre}</td>
                             <td>{estudiante.semestre}</td>
                             <td> <button className="btn btn-info" onClick={editar}>Editar</button></td>
-                            <td><button type="button" class="btn btn-danger">Eliminar</button></td>
+                            <td><button className="btn btn-danger" onClick={deleteRow}>Eliminar</button></td>
                         </tr>)
                     }
                 </tbody>
