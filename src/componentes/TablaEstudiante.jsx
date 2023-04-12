@@ -26,6 +26,7 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
                             <td>{estudiante.nombre}</td>
                             <td>{estudiante.semestre}</td>
                             <td> <button className="btn btn-info" onClick={editar}>Editar</button></td>
+                            <td><button type="button" class="btn btn-danger">Eliminar</button></td>
                         </tr>)
                     }
                 </tbody>
