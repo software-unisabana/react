@@ -1,13 +1,9 @@
+export const TablaEstudiante = ({listaEstudiantes, editar}) => {
 
-
-
-
-
-export const TablaEstudiante = ({ listaEstudiantes }) => {
-
-    const editar=()=>{
-        
+    const recibir = (event, estudiante) => {
+        editar(estudiante)
     }
+
     return (
         <>
             <table className="table">
@@ -25,7 +21,7 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
                             <td>{estudiante.id}</td>
                             <td>{estudiante.nombre}</td>
                             <td>{estudiante.semestre}</td>
-                            <td> <button className="btn btn-info" onClick={editar}>Editar</button></td>
+                            <td> <button className="btn btn-info" onClick={(event) => recibir(event, estudiante)}>Editar</button></td>
                         </tr>)
                     }
                 </tbody>

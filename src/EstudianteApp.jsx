@@ -2,8 +2,6 @@ import { useState } from "react"
 import { FormularioEstudiante } from "./componentes/FormularioEstudiante";
 import { TablaEstudiante } from "./componentes/TablaEstudiante";
 
-
-
 //<ListaEstudiantes lista={estudiantes}/>
 
 export const EstudiantesApp = () => {
@@ -15,10 +13,14 @@ export const EstudiantesApp = () => {
         setEstudiantes([...estudiantes, estudiante])
     }
 
+    const editarEstudiante = (estudiante) => {
+        setEstudiantes([...estudiantes, estudiante])
+    }
+
     return (
         <>
-            <FormularioEstudiante agregar={(estu) => { agregarEstudiante(estu) }} />
-            <TablaEstudiante listaEstudiantes={estudiantes} />
+            <FormularioEstudiante agregar={(estu) => { agregarEstudiante(estu) }} /> <br/>
+            <TablaEstudiante listaEstudiantes={estudiantes} editar={(estu) => { agregarEstudiante(estu) }} />
         </>
     )
 }
