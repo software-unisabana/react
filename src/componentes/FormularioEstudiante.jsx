@@ -27,6 +27,7 @@ export const FormularioEstudiante = ({ agregar, modificar, aModificar, modo } ) 
         let nuevoSemestre = aModificar.semestre
 
         if(id != ''){
+
             nuevoId = id
         }
 

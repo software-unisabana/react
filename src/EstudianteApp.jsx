@@ -11,7 +11,18 @@ export const EstudiantesApp = () => {
     console.log(estudiantes);
 
     const agregarEstudiante = (estudiante) => {
-        setEstudiantes([...estudiantes, estudiante])
+        let verificado = true
+
+        estudiantes.map((estu) => {
+            if ( estu.id == estudiante.id){
+                alert('Ese ID ya le pertenece a otro estudiante')
+                verificado = false
+            }
+        })
+        
+        if ( verificado ){
+            setEstudiantes([...estudiantes, estudiante])
+        }
     }
 
     const editarEstudiante = (estu) => {
@@ -20,17 +31,29 @@ export const EstudiantesApp = () => {
     }
 
     const modEstudiante = (viejoEstudiante, nuevoEstudiante) => {
-        setEstudiantes(
-            estudiantes.map((estudiante) => {
+        let verificado = true
 
-                if(viejoEstudiante.id == estudiante.id){
-                    estudiante.id = nuevoEstudiante.id
-                    estudiante.nombre = nuevoEstudiante.nombre
-                    estudiante.semestre = nuevoEstudiante.semestre
-                }
-                return(estudiante)
-            })
-        )
+        estudiantes.map((estudiante) => {
+            if ( nuevoEstudiante.id == estudiante.id && estudiante.id != viejoEstudiante.id){
+                alert('Ese ID ya le pertenece a otro estudiante')
+                verificado = false
+            }
+        })
+
+        if (verificado){
+            setEstudiantes(
+                estudiantes.map((estudiante) => {
+    
+                    if(viejoEstudiante.id == estudiante.id){
+                        estudiante.id = nuevoEstudiante.id
+                        estudiante.nombre = nuevoEstudiante.nombre
+                        estudiante.semestre = nuevoEstudiante.semestre
+                    }
+                    return(estudiante)
+                })
+            )
+        }
+        
         setModo('Registrar')
     }
 
