@@ -1,8 +1,5 @@
 export const TablaEstudiante = ({listaEstudiantes, editar}) => {
 
-    const recibir = (event, estudiante) => {
-        editar(estudiante)
-    }
 
     return (
         <>
@@ -17,12 +14,14 @@ export const TablaEstudiante = ({listaEstudiantes, editar}) => {
                 </thead>
                 <tbody>
                     {
-                        listaEstudiantes.map((estudiante) => <tr key={estudiante.id}>
-                            <td>{estudiante.id}</td>
-                            <td>{estudiante.nombre}</td>
-                            <td>{estudiante.semestre}</td>
-                            <td> <button className="btn btn-info" onClick={(event) => recibir(event, estudiante)}>Editar</button></td>
-                        </tr>)
+                        listaEstudiantes.map((estudiante) => 
+                            <tr key={estudiante.id}>
+                                <td>{estudiante.id}</td>
+                                <td>{estudiante.nombre}</td>
+                                <td>{estudiante.semestre}</td>
+                                <td> <button className="btn btn-info" onClick={(event) => editar(estudiante)}>Editar</button></td>
+                            </tr>
+                        )
                     }
                 </tbody>
             </table>
