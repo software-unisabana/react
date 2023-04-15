@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const FormularioEstudiante = ({ agregar,datos }) => {
+export const FormularioEstudiante = ({ agregar }) => {
   const [id, setId] = useState("");
   const [nombre, setNombre] = useState("");
   const [semestre, setSemestre] = useState("");
@@ -18,7 +18,12 @@ export const FormularioEstudiante = ({ agregar,datos }) => {
     setNombre("");
     setSemestre("");
   };
-  
+  const[cambioID,setcambioID]=useState("Ingrese id");
+  const[cambioNombre,setcambioNombre]=useState("Ingrese nombre");
+  const[cambioSemestre,setcambioSemestre]=useState("Ingrese semestre");
+  if (estado=="") {
+    
+  }
   return (
     <>
       <form onSubmit={guardarEstudiante} >
@@ -29,7 +34,7 @@ export const FormularioEstudiante = ({ agregar,datos }) => {
             name="id"
             className="form-control"
             id="id"
-            placeholder="Ingrese id"
+            placeholder={cambioID}
             value={id}
             onChange={(event) => setId(event.target.value)}
           />
@@ -41,7 +46,7 @@ export const FormularioEstudiante = ({ agregar,datos }) => {
             name="nombre"
             className="form-control"
             id="nombre"
-            placeholder="nombre"
+            placeholder={cambioNombre}
             value={nombre}
             onChange={(event) => setNombre(event.target.value)}
           />
@@ -53,7 +58,7 @@ export const FormularioEstudiante = ({ agregar,datos }) => {
             name="semestre"
             className="form-control"
             id="semestre"
-            placeholder="semestre"
+            placeholder={cambioSemestre}
             value={semestre}
             onChange={(event) => setSemestre(event.target.value)}
           />
