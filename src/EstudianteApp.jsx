@@ -7,16 +7,17 @@ import { Alert } from "bootstrap";
 export const EstudiantesApp = () => {
 
     const [estudiantes, setEstudiantes] = useState([]);
-    const[modificar,setModificar]=useState({});
-    const[estado,setEstado]=useState("registrar");
+    //const[modificar,setModificar]=useState({});
+    const[estado,setEstado]=useState(true); //true es registrar, false es actualizar
     const [buscar,setBuscar]=useState("");
+    const [estudianteAct,setEstudianteACT]=useState({})
 
     const agregarEstudiante = (estudiante) => {
         let verificacion=true
         estudiantes.map((estu)=>{
             if(estu.id == estudiante.id){
                 <div class="alert alert-danger" role="alert">
-                     Ese id ya lo tiene otro estudiante
+                Ese id ya lo tiene otro estudiante
                 </div>
                 verificacion=false
             }
@@ -29,9 +30,9 @@ export const EstudiantesApp = () => {
         setEstudiantes(estudiantes.filter((estudiante) => estudiante.id!==estuia.id))
     }
     const FiltrolistaEstudiantes= estudiantes.filter((estudiante) =>
-    estudiante.nombre.toLowerCase().includes(buscar.toLowerCase())
+    estudiante.nombre.includes(buscar)
     );
-
+/*
     const editarStude= (estu)=>{
         setEstado("modificar");
         setModificar(estu);
@@ -60,11 +61,20 @@ export const EstudiantesApp = () => {
         }
         setEstado("registrar")
     }
+    */
     return (
         <>
-            <FormularioEstudiante agregar={(estu) => agregarEstudiante(estu)} />
+            <FormularioEstudiante agregar={(estu) => agregarEstudiante(estu)} 
+            estudiante={estudianteAct} 
+            estado={estado} 
+            setEstado={(est)=>{setEstado(est)}}/>
             <Buscador buscar={buscar} setBuscar={(busqueda)=>setBuscar(busqueda)}/>   
-            <TablaEstudiante eliminarEstudiantes={(estuia)=>{eliminar(estuia)}} FiltrolistaEstudiantes={FiltrolistaEstudiantes}/>  
+            <TablaEstudiante eliminarEstudiantes={(estuia)=>{eliminar(estuia)}} 
+            FiltrolistaEstudiantes={FiltrolistaEstudiantes} 
+            editar={(estudiante)=>{
+                setEstudianteACT(estudiante) 
+                setEstado(!estado)
+                }}/>  
         </>
     )
 }
