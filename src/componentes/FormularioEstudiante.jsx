@@ -53,7 +53,7 @@ export const FormularioEstudiante = ({ agregar,estado,modificacion,modificar }) 
         <div className="form-group ">
           <label htmlFor="id">ID Estudiante</label>
           <input
-            type="id"
+            type="number"
             name="id"
             className="form-control"
             id="id"
@@ -77,7 +77,7 @@ export const FormularioEstudiante = ({ agregar,estado,modificacion,modificar }) 
         <div className="form-group">
           <label htmlFor="semestre">Semestre</label>
           <input
-            type="text"
+            type="number"
             name="semestre"
             className="form-control"
             id="semestre"

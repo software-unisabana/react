@@ -1,13 +1,15 @@
 import { useState } from "react"
 import { FormularioEstudiante } from "./componentes/FormularioEstudiante";
 import { TablaEstudiante } from "./componentes/TablaEstudiante";
+import { Buscador } from "./componentes/Buscador";
+
 import { Alert } from "bootstrap";
 export const EstudiantesApp = () => {
 
     const [estudiantes, setEstudiantes] = useState([]);
     const[modificar,setModificar]=useState({});
     const[estado,setEstado]=useState("registrar");
-    console.log(estudiantes);
+    const [buscar,setBuscar]=useState("");
 
     const agregarEstudiante = (estudiante) => {
         let verificacion=true
@@ -23,6 +25,12 @@ export const EstudiantesApp = () => {
             setEstudiantes([...estudiantes, estudiante])
         }
     }
+    const eliminar=(estuia)=>{
+        setEstudiantes(estudiantes.filter((estudiante) => estudiante.id!==estuia.id))
+    }
+    const FiltrolistaEstudiantes= estudiantes.filter((estudiante) =>
+    estudiante.nombre.toLowerCase().includes(buscar.toLowerCase())
+    );
 
     const editarStude= (estu)=>{
         setEstado("modificar");
@@ -54,8 +62,9 @@ export const EstudiantesApp = () => {
     }
     return (
         <>
-            <FormularioEstudiante agregar={(estu) => { agregarEstudiante(estu) }} estado={estado} modificacion={modificar} modificar={(infoVieja,infoNueva)=>{modificarEstudiante(infoVieja,infoNueva)}} />
-            <TablaEstudiante listaEstudiantes={estudiantes} editar={(stude)=>editarStude(stude)} />
+            <FormularioEstudiante agregar={(estu) => agregarEstudiante(estu)} />
+            <Buscador buscar={buscar} setBuscar={(busqueda)=>setBuscar(busqueda)}/>   
+            <TablaEstudiante eliminarEstudiantes={(estuia)=>{eliminar(estuia)}} FiltrolistaEstudiantes={FiltrolistaEstudiantes}/>  
         </>
     )
 }
