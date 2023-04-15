@@ -25,6 +25,14 @@ export const EstudiantesApp = () => {
         }
     }
 
+    const eliminarEstudiante = (estudiante) => {
+
+        setEstudiantes(
+
+            estudiantes.filter((estu) => estu.id != estudiante.id)
+        )
+    }
+
     const editarEstudiante = (estu) => {
         setModo('Modificar')
         setEstudiante(estu)
@@ -66,7 +74,11 @@ export const EstudiantesApp = () => {
                 modo={ modo }
             /> <br/>
 
-            <TablaEstudiante listaEstudiantes={estudiantes} editar={(estu) => { editarEstudiante(estu) }} />
+            <TablaEstudiante 
+                listaEstudiantes={estudiantes} 
+                editar={(estu) => { editarEstudiante(estu) }}
+                eliminar={(estu) => { eliminarEstudiante(estu) }}
+            />
         </>
     )
 }
