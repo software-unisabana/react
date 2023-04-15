@@ -4,7 +4,6 @@ export const FormularioEstudiante = ({ agregar,estado,modificacion,modificar }) 
   const [id, setId] = useState("");
   const [nombre, setNombre] = useState("");
   const [semestre, setSemestre] = useState("");
-  const[funcion,setFuncion]=useState({guardarEstudiante})
   const guardarEstudiante = (event) => {
     event.preventDefault();
 
@@ -18,25 +17,9 @@ export const FormularioEstudiante = ({ agregar,estado,modificacion,modificar }) 
     setNombre("");
     setSemestre("");
   };
+  const[funcion,setFuncion]=useState({guardarEstudiante})
   const modificarEstudiante=(event)=>{
       event.preventDefault();
-      let newID = modificacion.id
-      if (id !=="") {
-
-      }
-      let newName =modificacion.nombre
-      if (newName!=="") {
-       
-      }
-      let newSemestre=modificacion.semestre
-      if (newSemestre!=="") {
-        
-      }
-      let estudiante={
-        id:newID,
-        nombre:newName,
-        semestre:newSemestre
-      };
   }
     
   const[cambioID,setcambioID]=useState("Ingrese id");
