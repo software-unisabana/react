@@ -24,8 +24,16 @@ export const EstudiantesApp = () => {
         }
     }
 
-    const eliminarEstudiante = (estudiante) => {
+    const modLista = (terminoBusqueda) =>{
+        const resultadosBusqueda = estudiantes.filter((elemento) => {
+            if (elemento.name.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
+                return elemento;
+            }
+        });
+        return resultadosBusqueda;
+    }
 
+    const eliminarEstudiante = (estudiante) => {
         setEstudiantes(
 
             estudiantes.filter((estu) => estu.id !== estudiante.id)
@@ -39,7 +47,6 @@ export const EstudiantesApp = () => {
 
     const modEstudiante = (viejoEstudiante, nuevoEstudiante) => {
         let verificado = true
-
         estudiantes.map((estudiante) => {
             if ( nuevoEstudiante.id === estudiante.id && estudiante.id !== viejoEstudiante.id){
                 alert('Ese ID ya le pertenece a otro estudiante')
@@ -74,7 +81,7 @@ export const EstudiantesApp = () => {
             /> <br/>
 
             <BarraBusqueda
-                listaEstudiantes={estudiantes}
+                filtrar = {(termino) => modLista(termino)}
             />
 
             <TablaEstudiante 
