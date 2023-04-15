@@ -4,7 +4,7 @@ import { useState } from "react"
 
 
 
-export const TablaEstudiante = ({ listaEstudiantes }) => {
+export const TablaEstudiante = ({listaEstudiantes ,eliminarEstudiantes}) => {
 
     const [filter, setFilter] = useState("");
 
@@ -43,6 +43,7 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
                         <td>{estudiante.nombre}</td>
                         <td>{estudiante.semestre}</td>
                         <td> <button className="btn btn-info" >Editar</button></td>
+                            <td> <button className="btn btn-info" onClick={()=>eliminar(estudiante)}>Eliminar</button></td>
 
                         </tr>)
                     }
