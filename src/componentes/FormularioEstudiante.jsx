@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-export const FormularioEstudiante = ({ agregar }) => {
+export const FormularioEstudiante = ({ agregar,estado,modificacion,modificar }) => {
   const [id, setId] = useState("");
   const [nombre, setNombre] = useState("");
   const [semestre, setSemestre] = useState("");
-
+  const[funcion,setFuncion]=useState({guardarEstudiante})
   const guardarEstudiante = (event) => {
     event.preventDefault();
 
@@ -18,15 +18,38 @@ export const FormularioEstudiante = ({ agregar }) => {
     setNombre("");
     setSemestre("");
   };
+  const modificarEstudiante=(event)=>{
+      event.preventDefault();
+      let newID = modificacion.id
+      if (id !=="") {
+
+      }
+      let newName =modificacion.nombre
+      if (newName!=="") {
+       
+      }
+      let newSemestre=modificacion.semestre
+      if (newSemestre!=="") {
+        
+      }
+      let estudiante={
+        id:newID,
+        nombre:newName,
+        semestre:newSemestre
+      };
+  }
+    
   const[cambioID,setcambioID]=useState("Ingrese id");
   const[cambioNombre,setcambioNombre]=useState("Ingrese nombre");
   const[cambioSemestre,setcambioSemestre]=useState("Ingrese semestre");
-  if (estado=="") {
-    
-  }
+  const[diferentelbl,setdiferentelbl]=useState("Registrar")
+  if (estado=="modificar") {
+    setFuncion(modificarEstudiante)
+    setdiferentelbl("editar");
+  }else if (estado=="registrar") {setcambioID("Ingrese id"); setcambioNombre("Ingrese nombre"); setcambioSemestre("Ingrese semestre");};
   return (
     <>
-      <form onSubmit={guardarEstudiante} >
+      <form onSubmit={funcion} >
         <div className="form-group ">
           <label htmlFor="id">ID Estudiante</label>
           <input
@@ -65,7 +88,7 @@ export const FormularioEstudiante = ({ agregar }) => {
         </div>
 
         <button type="submit" className="btn btn-primary">
-          Registrar
+          {diferentelbl}
         </button>
       </form>
     </>

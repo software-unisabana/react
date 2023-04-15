@@ -1,12 +1,5 @@
 import React, { Component } from 'react'
-import { FormularioEstudiante } from './FormularioEstudiante';
-export const TablaEstudiante = ({ listaEstudiantes }) => {
-
-    const subirInformacion= listaEstudiantes.map((estudiante)=>{
-        return(
-           <FormularioEstudiante datos={estudiante} />
-        );
-    });
+export const TablaEstudiante = ({ listaEstudiantes,editar }) => {
     return (
         <>
             <table className="table">
@@ -24,7 +17,7 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
                             <td>{estudiante.id}</td>
                             <td>{estudiante.nombre}</td>
                             <td>{estudiante.semestre}</td>
-                            <td> <button className="editbtn" onClick={()=>subirInformacion(estudiante)}>Editar</button></td>
+                            <td> <button className="editbtn" onClick={(event)=>{event.preventDefault(); editar(estudiante)}}>Editar</button></td>
                         </tr>)
                     }
                 </tbody>
