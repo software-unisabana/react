@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 
 export const BarraBusqueda = ({ listaEstudiantes }) => {
 
-    const [filtrados, setFiltrados] = useState([]);
     const [estudiantes, setEstudiantes] = useState([...listaEstudiantes]);
     const [busqueda, setBusqueda] = useState("");
 
@@ -13,13 +12,11 @@ export const BarraBusqueda = ({ listaEstudiantes }) => {
 
     const buscarEstudiante = (terminoBusqueda) => {
         const resultadosBusqueda = estudiantes.filter((elemento) => {
-            if (elemento.name.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
-                || elemento.company.name.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
-            ) {
+            if (elemento.name.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
                 return elemento;
             }
         });
-        setFiltrados(resultadosBusqueda);
+        setEstudiantes(resultadosBusqueda);
     }
 
     return (
