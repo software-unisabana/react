@@ -10,7 +10,7 @@ import { Buscador } from "./componentes/Buscador";
 export const EstudiantesApp = () => {
 
     const [estudiantes, setEstudiantes] = useState([]);
-    console.log(estudiantes);
+    const [buscar,setBuscar]=useState("");
 
     const agregarEstudiante = (estudiante) => {
         setEstudiantes([...estudiantes, estudiante])
@@ -18,12 +18,15 @@ export const EstudiantesApp = () => {
     const eliminar=(estuia)=>{
         setEstudiantes(estudiantes.filter((estudiante) => estudiante.id!==estuia.id))
     }
+    const FiltrolistaEstudiantes= estudiantes.filter((estudiante) =>
+    estudiante.nombre.toLowerCase().includes(buscar.toLowerCase())
+    );
 
     return (
         <>
             <FormularioEstudiante agregar={(estu) => agregarEstudiante(estu)} />
-            <TablaEstudiante listaEstudiantes={estudiantes} eliminarEstudiantes={(estuia)=>{eliminar(estuia)}}/>  
-            <Buscador/>          
+            <Buscador buscar={buscar} setBuscar={(busqueda)=>setBuscar(busqueda)}/>   
+            <TablaEstudiante eliminarEstudiantes={(estuia)=>{eliminar(estuia)}} FiltrolistaEstudiantes={FiltrolistaEstudiantes}/>  
         </>
     )
 }

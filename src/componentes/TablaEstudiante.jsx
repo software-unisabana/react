@@ -4,29 +4,9 @@ import { useState } from "react"
 
 
 
-export const TablaEstudiante = ({listaEstudiantes ,eliminarEstudiantes}) => {
-
-    const [filter, setFilter] = useState("");
-
-    const handleFilterChange = (evento) => {
-        setFilter(evento.target.value);
-    };
-    
-   
-    const FiltrolistaEstudiantes= listaEstudiantes.filter((estudiante) =>
-    estudiante.id.toLowerCase().includes(filter.toLowerCase())
-  );
-
-    const eliminar= (estudiante)=> {
-        eliminarEstudiantes(estudiante)
-    }
-
+export const TablaEstudiante = ({eliminarEstudiantes,FiltrolistaEstudiantes}) => {
     return (
         <>
-           
-            <input type="text" id="myInput" onChange={handleFilterChange} placeholder="CONSULTAR ESTUDIANTE"></input>
-
-
             <table className="table">
                 <thead>
                     <tr>
@@ -35,19 +15,16 @@ export const TablaEstudiante = ({listaEstudiantes ,eliminarEstudiantes}) => {
                         <th scope="col">Semestre</th>
                         <th scope="col">Acciones</th>
                     </tr>
-                      
                 </thead>
 
                 <tbody>
-                 
                     { 
-                     FiltrolistaEstudiantes.map((estudiante) => <tr key={estudiante.id}>
+                    FiltrolistaEstudiantes.map((estudiante) => <tr key={estudiante.id}>
                         <td>{estudiante.id}</td>
                         <td>{estudiante.nombre}</td>
                         <td>{estudiante.semestre}</td>
                         <td> <button className="btn btn-info" >Editar</button></td>
-                            <td> <button className="btn btn-info" onClick={()=>eliminar(estudiante)}>Eliminar</button></td>
-
+                        <td> <button className="btn btn-info" onClick={()=>eliminarEstudiantes(estudiante)}>Eliminar</button></td>
                         </tr>)
                     }
                 </tbody>

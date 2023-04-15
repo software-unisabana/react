@@ -1,23 +1,17 @@
-import { useCallback, useState } from "react"
 
-export const Buscador=()=>{
-    const [buscar,setBuscar]=useState("");
-    const Buscar=()=>{
-
-    }
+export const Buscador=({buscar,setBuscar})=>{
+    
     return (
         <>
-        <form onSubmit={Buscar}>
-                <div className="form-group ">
-                    <label htmlFor="id">buscar</label>
-                    <input 
+        <div className="form-group ">
+            <label htmlFor="id">buscar</label>
+                <input 
                     type="text" 
                     className="form-control" 
                     id="id" 
-                    placeholder="Ingrese id" 
+                    placeholder="BUSCAR NOMBRE" 
                     value={buscar} onChange={(event) => setBuscar(event.target.value)} />
-                </div>
-        </form>
+            </div>
         </>
         )
 }
