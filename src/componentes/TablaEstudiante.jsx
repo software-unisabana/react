@@ -17,6 +17,9 @@ export const TablaEstudiante = ({listaEstudiantes ,eliminarEstudiantes}) => {
     estudiante.id.toLowerCase().includes(filter.toLowerCase())
   );
 
+    const eliminar= (estudiante)=> {
+        eliminarEstudiantes(estudiante)
+    }
 
     return (
         <>
