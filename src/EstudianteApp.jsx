@@ -3,10 +3,6 @@ import { FormularioEstudiante } from "./componentes/FormularioEstudiante";
 import { TablaEstudiante } from "./componentes/TablaEstudiante";
 import { Buscador } from "./componentes/Buscador";
 
-
-
-//<ListaEstudiantes lista={estudiantes}/>
-
 export const EstudiantesApp = () => {
 
     const [estudiantes, setEstudiantes] = useState([]);

@@ -1,10 +1,4 @@
 import { useState } from "react"
-
-
-
-
-
-
 export const FormularioEstudiante = ({ agregar }) => {
     const [id, setId] = useState("");
     const [nombre, setNombre] = useState("");

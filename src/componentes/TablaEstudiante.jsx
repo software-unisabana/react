@@ -1,8 +1,3 @@
-import { useState } from "react"
-
-
-
-
 
 export const TablaEstudiante = ({eliminarEstudiantes,FiltrolistaEstudiantes}) => {
     return (
@@ -16,7 +11,6 @@ export const TablaEstudiante = ({eliminarEstudiantes,FiltrolistaEstudiantes}) =>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
-
                 <tbody>
                     { 
                     FiltrolistaEstudiantes.map((estudiante) => <tr key={estudiante.id}>
