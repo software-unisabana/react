@@ -1,14 +1,10 @@
 import { useState } from "react"
 
-
-
-
-
-
-export const FormularioEstudiante = ({ agregar }) => {
+export const FormularioEstudiante = ({ agregar , buscarName }) => {
     const [id, setId] = useState("");
     const [nombre, setNombre] = useState("");
     const [semestre, setSemestre] = useState("");
+    
 
     const guardarEstudiante = (event) => {
         event.preventDefault();
@@ -23,6 +19,7 @@ export const FormularioEstudiante = ({ agregar }) => {
         setNombre("");
         setSemestre("");
     }
+
 
     return (
         <>
@@ -42,6 +39,7 @@ export const FormularioEstudiante = ({ agregar }) => {
 
                 <button type="submit" className="btn btn-primary">Registrar</button>
             </form>
+            
         </>
     )
 }
