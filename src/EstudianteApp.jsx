@@ -16,7 +16,15 @@ export const EstudiantesApp = () => {
     const agregarEstudiante = (estudiante) => {
         setEstudiantes([...estudiantes, estudiante])
     }
-    
+    const borrarEstudiante = (id) => {
+        let opcion = window.confirm("¿Realmente desea borrar al estudiante?")
+
+        if(opcion){
+            let nuevaLista = estudiantes.filter(estudiantes => estudiantes.id !== id)
+            setEstudiantes(nuevaLista)
+        }
+    }
+
     const filtrarEstudiante = (event) => {
         event.preventDefault();
         if(buscar.trim().length >= 1){
@@ -33,11 +41,10 @@ export const EstudiantesApp = () => {
         }
 
     }
-    
 
     return (
         <>
-            <FormularioEstudiante agregar={(estu) => { agregarEstudiante(estu) }}/>
+            <FormularioEstudiante agregar={(estu) => { agregarEstudiante(estu) }} />
             <form onSubmit={filtrarEstudiante}>
                 <div>
                     <label htmlFor="search">Buscar:</label>
@@ -45,7 +52,7 @@ export const EstudiantesApp = () => {
                     <button type="submit" className="btn btn-primary">Buscar</button>
                 </div>
             </form>
-            <TablaEstudiante listaEstudiantes={estudiantes} />
+            <TablaEstudiante listaEstudiantes={estudiantes} borrarEstudiante={borrarEstudiante} />
         </>
     )
 }
