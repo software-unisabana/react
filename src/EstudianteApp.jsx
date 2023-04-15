@@ -37,7 +37,7 @@ export const EstudiantesApp = () => {
 
     return (
         <>
-            <FormularioEstudiante agregar={(estu) => { agregarEstudiante(estu) }} buscarName={(name) => {filtrarEstudiante(name)}}/>
+            <FormularioEstudiante agregar={(estu) => { agregarEstudiante(estu) }}/>
             <form onSubmit={filtrarEstudiante}>
                 <div>
                     <label htmlFor="search">Buscar:</label>
