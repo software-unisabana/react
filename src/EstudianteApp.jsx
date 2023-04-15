@@ -1,14 +1,13 @@
 import { useState } from "react"
 import { FormularioEstudiante } from "./componentes/FormularioEstudiante";
 import { TablaEstudiante } from "./componentes/TablaEstudiante";
+import { BarraBusqueda } from "./componentes/BarraBusqueda";
 
 export const EstudiantesApp = () => {
 
     const [estudiantes, setEstudiantes] = useState([]);
     const [aModificar, setEstudiante] = useState({});
     const [modo, setModo] = useState('Registrar');
-
-    console.log(estudiantes);
 
     const agregarEstudiante = (estudiante) => {
         let verificado = true
@@ -73,6 +72,10 @@ export const EstudiantesApp = () => {
                 aModificar={ aModificar }
                 modo={ modo }
             /> <br/>
+
+            <BarraBusqueda
+                listaEstudiantes={estudiantes}
+            />
 
             <TablaEstudiante 
                 listaEstudiantes={estudiantes} 
