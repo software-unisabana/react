@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { FormularioEstudiante } from "./componentes/FormularioEstudiante";
 import { TablaEstudiante } from "./componentes/TablaEstudiante";
+import { Buscador } from "./componentes/Buscador";
 
 
 
@@ -21,7 +22,8 @@ export const EstudiantesApp = () => {
     return (
         <>
             <FormularioEstudiante agregar={(estu) => agregarEstudiante(estu)} />
-            <TablaEstudiante listaEstudiantes={estudiantes} eliminarEstudiantes={(estuia)=>{eliminar(estuia)}}/>            
+            <TablaEstudiante listaEstudiantes={estudiantes} eliminarEstudiantes={(estuia)=>{eliminar(estuia)}}/>  
+            <Buscador/>          
         </>
     )
 }
