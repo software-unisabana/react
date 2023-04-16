@@ -2,8 +2,6 @@ import { useState } from "react"
 import { FormularioEstudiante } from "./componentes/FormularioEstudiante";
 import { TablaEstudiante } from "./componentes/TablaEstudiante";
 import { Buscador } from "./componentes/Buscador";
-
-import { Alert } from "bootstrap";
 export const EstudiantesApp = () => {
 
     const [estudiantes, setEstudiantes] = useState([]);
@@ -53,10 +51,17 @@ export const EstudiantesApp = () => {
             )
         }
     }
+    const eliminar=(estuia)=>{
+        setEstudiantes(estudiantes.filter((estudiante) => estudiante.id!==estuia.id))
+    }
+    const FiltrolistaEstudiantes= estudiantes.filter((estudiante) =>
+    estudiante.nombre.toLowerCase().includes(buscar.toLowerCase())
+    );
 
         
     return (
         <>
+
             <FormularioEstudiante agregar={(estu) => agregarEstudiante(estu)} 
             estudiante={estudianteAct} 
             actEstudiante={(estudiante, nuevoEstudiante) => { VerificarEstudiante(estudiante,nuevoEstudiante) }}
