@@ -1,79 +1,130 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export const FormularioEstudiante = ({ agregar,estado,modificacion,modificar }) => {
-  const [id, setId] = useState("");
-  const [nombre, setNombre] = useState("");
-  const [semestre, setSemestre] = useState("");
-  const guardarEstudiante = (event) => {
+export const FormularioEstudiante = ({agregar,estudiante,actEstudiante,estado,setEstado,}) => {
+const [id, setId] = useState("");
+const [nombre, setNombre] = useState("");
+const [semestre, setSemestre] = useState("");
+
+const actualizarEst = (eve) => {
+    eve.preventDefault();
+    if (id == "") {
+    return alert("INGRESE UN VALOR EN ID");
+    }
+    if (nombre == "") {
+    return alert("INGRESE UN VALOR EN NOMBRE");
+    }
+    if (semestre == "") {
+    return alert("INGRESE UN VALOR EN SEMESTRE");
+    }
+    let estudianteNuevo = {
+    id: id,
+    nombre: nombre,
+    semestre: semestre,
+    };
+    actEstudiante(estudiante, estudianteNuevo);
+    setId("");
+    setNombre("");
+    setSemestre("");
+    setEstado(!estado);
+};
+const guardarEstudiante = (event) => {
     event.preventDefault();
-
+    if (id == "") {
+    return alert("INGRESE UN VALOR EN ID");
+    }
+    if (nombre == "") {
+    return alert("INGRESE UN VALOR EN NOMBRE");
+    }
+    if (semestre == "") {
+    return alert("INGRESE UN VALOR EN SEMESTRE");
+    }
     let estudiante = {
-      id: id,
-      nombre: nombre,
-      semestre: semestre,
+    id: id,
+    nombre: nombre,
+    semestre: semestre,
     };
     agregar(estudiante);
     setId("");
     setNombre("");
     setSemestre("");
-  };
-  const[funcion,setFuncion]=useState({guardarEstudiante})
-  const modificarEstudiante=(event)=>{
-      event.preventDefault();
-  }
-    
-  const[cambioID,setcambioID]=useState("Ingrese id");
-  const[cambioNombre,setcambioNombre]=useState("Ingrese nombre");
-  const[cambioSemestre,setcambioSemestre]=useState("Ingrese semestre");
-  const[diferentelbl,setdiferentelbl]=useState("Registrar")
-  if (estado=="modificar") {
-    setFuncion(modificarEstudiante)
-    setdiferentelbl("editar");
-  }else if (estado=="registrar") {setcambioID("Ingrese id"); setcambioNombre("Ingrese nombre"); setcambioSemestre("Ingrese semestre");};
-  return (
+};
+const estructuraForm = (
+    dondeGuardar,
+    valorID,
+    valorNombre,
+    valorSemestre,
+    estadoBTN
+) => {
+    return (
     <>
-      <form onSubmit={funcion} >
+        <form onSubmit={dondeGuardar}>
         <div className="form-group ">
-          <label htmlFor="id">ID Estudiante</label>
-          <input
-            type="id"
-            name="id"
-            className="form-control"
-            id="id"
-            placeholder={cambioID}
-            value={id}
-            onChange={(event) => setId(event.target.value)}
-          />
+            <label htmlFor="id">ID Estudiante</label>
+            <input
+              type="number"
+              name="id"
+              className="form-control"
+              id="id"
+              placeholder={valorID}
+              value={id}
+              onChange={(event) => setId(event.target.value)}
+            />
         </div>
         <div className="form-group">
-          <label htmlFor="nombre">Nombre</label>
-          <input
-            type="text"
-            name="nombre"
-            className="form-control"
-            id="nombre"
-            placeholder={cambioNombre}
-            value={nombre}
-            onChange={(event) => setNombre(event.target.value)}
-          />
+            <label htmlFor="nombre">Nombre</label>
+            <input
+              type="text"
+              name="nombre"
+              className="form-control"
+              id="nombre"
+              placeholder={valorNombre}
+              value={nombre}
+              onChange={(event) => setNombre(event.target.value)}
+            />
         </div>
         <div className="form-group">
-          <label htmlFor="semestre">Semestre</label>
-          <input
-            type="text"
-            name="semestre"
-            className="form-control"
-            id="semestre"
-            placeholder={cambioSemestre}
-            value={semestre}
-            onChange={(event) => setSemestre(event.target.value)}
-          />
+            <label htmlFor="semestre">Semestre</label>
+            <input
+              type="number"
+              name="semestre"
+              className="form-control"
+              id="semestre"
+              placeholder={valorSemestre}
+              value={semestre}
+              onChange={(event) => setSemestre(event.target.value)}
+            />
         </div>
 
         <button type="submit" className="btn btn-primary">
-          {diferentelbl}
+            {estadoBTN}
         </button>
-      </form>
+        </form>
     </>
-  );
+    );
+};
+if (estado) {
+    return (
+    <>
+        {estructuraForm(
+          guardarEstudiante,
+          "id",
+          "nombre",
+          "semestre",
+          "Resgistrar"
+        )}
+    </>
+    );
+} else {
+    return (
+    <>
+        {estructuraForm(
+          actualizarEst,
+          estudiante.id,
+          estudiante.nombre,
+          estudiante.semestre,
+          "Actualizar"
+        )}
+    </>
+    );
+}
 };
