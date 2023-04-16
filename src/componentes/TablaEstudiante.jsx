@@ -1,14 +1,13 @@
 
 
 
+export const TablaEstudiante = ({ listaEstudiantes}) => {
 
+   
+    
 
-export const TablaEstudiante = ({ listaEstudiantes }) => {
-
-    const editar = () => {
-
-    }
     function deleteRow(event) {
+
         const row = event.target.parentNode.parentNode;
         row.parentNode.removeChild(row);
       }
