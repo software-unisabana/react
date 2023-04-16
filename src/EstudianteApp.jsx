@@ -8,6 +8,7 @@ export const EstudiantesApp = () => {
     const [estudiantes, setEstudiantes] = useState([]);
     const [aModificar, setEstudiante] = useState({});
     const [modo, setModo] = useState('Registrar');
+    let filtro = ""
 
     const agregarEstudiante = (estudiante) => {
         let verificado = true
@@ -25,12 +26,7 @@ export const EstudiantesApp = () => {
     }
 
     const modLista = (terminoBusqueda) =>{
-        const resultadosBusqueda = estudiantes.filter((elemento) => {
-            if (elemento.name.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
-                return elemento;
-            }
-        });
-        return resultadosBusqueda;
+        filtro = terminoBusqueda
     }
 
     const eliminarEstudiante = (estudiante) => {
@@ -71,6 +67,8 @@ export const EstudiantesApp = () => {
         setModo('Registrar')
     }
 
+    
+
     return (
         <>
             <FormularioEstudiante 
@@ -81,11 +79,12 @@ export const EstudiantesApp = () => {
             /> <br/>
 
             <BarraBusqueda
-                filtrar = {(termino) => modLista(termino)}
+                filtrar = {filtro}
             />
 
             <TablaEstudiante 
-                listaEstudiantes={estudiantes} 
+                listaEstudiantes={estudiantes}
+                filtrar = {filtro}
                 editar={(estu) => { editarEstudiante(estu) }}
                 eliminar={(estu) => { eliminarEstudiante(estu) }}
             />
