@@ -1,15 +1,13 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { FormularioEstudiante } from "./componentes/FormularioEstudiante";
 import { TablaEstudiante } from "./componentes/TablaEstudiante";
 
 
 
-//<ListaEstudiantes lista={estudiantes}/>
-
 export const EstudiantesApp = () => {
 
     const [estudiantes, setEstudiantes] = useState([]);
-    console.log(estudiantes);
+    const [dato, setDato] = useState({ id: "", nombre: "", semestre: "" });
 
     const agregarEstudiante = (estudiante) => {
         setEstudiantes([...estudiantes, estudiante])
@@ -17,8 +15,13 @@ export const EstudiantesApp = () => {
 
     return (
         <>
-            <FormularioEstudiante agregar={(estu) => { agregarEstudiante(estu) }} />
-            <TablaEstudiante listaEstudiantes={estudiantes} />
+            <FormularioEstudiante dato={dato} setDato={setDato}
+                agregar={(estu) => {
+                    agregarEstudiante(estu)
+
+                }} />
+            <TablaEstudiante listaEstudiantes={estudiantes}
+                setDato={setDato} />
         </>
     )
 }

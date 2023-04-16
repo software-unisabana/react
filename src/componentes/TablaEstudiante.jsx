@@ -1,13 +1,7 @@
 
 
-
-
-
-export const TablaEstudiante = ({ listaEstudiantes }) => {
-
-    const editar=()=>{
-        
-    }
+export const TablaEstudiante = ({ listaEstudiantes,setDato }) => {
+   
     return (
         <>
             <table className="table">
@@ -25,7 +19,7 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
                             <td>{estudiante.id}</td>
                             <td>{estudiante.nombre}</td>
                             <td>{estudiante.semestre}</td>
-                            <td> <button className="btn btn-info" onClick={editar}>Editar</button></td>
+                            <td> <button className="btn btn-info" onClick={()=>setDato(estudiante)}>Editar</button></td>
                         </tr>)
                     }
                 </tbody>
