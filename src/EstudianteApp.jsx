@@ -1,20 +1,20 @@
 import { useState } from "react"
 import { FormularioEstudiante } from "./componentes/FormularioEstudiante";
 import { TablaEstudiante } from "./componentes/TablaEstudiante";
+import { BarraBusqueda } from "./componentes/BarraBusqueda";
 
 export const EstudiantesApp = () => {
 
     const [estudiantes, setEstudiantes] = useState([]);
     const [aModificar, setEstudiante] = useState({});
     const [modo, setModo] = useState('Registrar');
-
-    console.log(estudiantes);
+    let filtro = ""
 
     const agregarEstudiante = (estudiante) => {
         let verificado = true
 
         estudiantes.map((estu) => {
-            if ( estu.id == estudiante.id){
+            if ( estu.id === estudiante.id){
                 alert('Ese ID ya le pertenece a otro estudiante')
                 verificado = false
             }
@@ -25,11 +25,14 @@ export const EstudiantesApp = () => {
         }
     }
 
-    const eliminarEstudiante = (estudiante) => {
+    const modLista = (terminoBusqueda) =>{
+        filtro = terminoBusqueda
+    }
 
+    const eliminarEstudiante = (estudiante) => {
         setEstudiantes(
 
-            estudiantes.filter((estu) => estu.id != estudiante.id)
+            estudiantes.filter((estu) => estu.id !== estudiante.id)
         )
     }
 
@@ -40,9 +43,8 @@ export const EstudiantesApp = () => {
 
     const modEstudiante = (viejoEstudiante, nuevoEstudiante) => {
         let verificado = true
-
         estudiantes.map((estudiante) => {
-            if ( nuevoEstudiante.id == estudiante.id && estudiante.id != viejoEstudiante.id){
+            if ( nuevoEstudiante.id === estudiante.id && estudiante.id !== viejoEstudiante.id){
                 alert('Ese ID ya le pertenece a otro estudiante')
                 verificado = false
             }
@@ -52,7 +54,7 @@ export const EstudiantesApp = () => {
             setEstudiantes(
                 estudiantes.map((estudiante) => {
     
-                    if(viejoEstudiante.id == estudiante.id){
+                    if(viejoEstudiante.id === estudiante.id){
                         estudiante.id = nuevoEstudiante.id
                         estudiante.nombre = nuevoEstudiante.nombre
                         estudiante.semestre = nuevoEstudiante.semestre
@@ -65,6 +67,8 @@ export const EstudiantesApp = () => {
         setModo('Registrar')
     }
 
+    
+
     return (
         <>
             <FormularioEstudiante 
@@ -74,8 +78,13 @@ export const EstudiantesApp = () => {
                 modo={ modo }
             /> <br/>
 
+            <BarraBusqueda
+                filtrar = {filtro}
+            />
+
             <TablaEstudiante 
-                listaEstudiantes={estudiantes} 
+                listaEstudiantes={estudiantes}
+                filtrar = {filtro}
                 editar={(estu) => { editarEstudiante(estu) }}
                 eliminar={(estu) => { eliminarEstudiante(estu) }}
             />
