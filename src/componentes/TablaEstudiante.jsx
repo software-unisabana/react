@@ -3,8 +3,8 @@
 
 export const TablaEstudiante = ({ listaEstudiantes}) => {
 
+
    
-    
 
     function deleteRow(event) {
 
