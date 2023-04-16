@@ -1,4 +1,7 @@
 import { useState } from "react";
+export const {eliminarPorId} =TablaEstudiante;
+
+
 
 export const TablaEstudiante = ({ listaEstudiantes }) => {
     const [search, setSearch] = useState("");
@@ -7,6 +10,16 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
     if(search!=""){
         estudiantesFiltrados= listaEstudiantes.filter((estudiante)=> estudiante.nombre===search);
     }
+
+    const estudiantes=listaEstudiantes;
+
+
+    const eliminarPorId = (id) => {
+        const nuevaLista = estudiantes.filter((estudiante) => estudiante.id !== id);
+        eliminarEstudiante(nuevaLista);
+    };
+
+
 
     return (
         <>
@@ -31,6 +44,7 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
                             <td>{estudiante.id}</td>
                             <td>{estudiante.nombre}</td>
                             <td>{estudiante.semestre}</td>
+                            <td> <button className="btn btn-info" onClick={ ()=> eliminarPorId (estudiante.id) }>Eliminar</button></td>
                             <td> <button className="btn btn-info" >Editar</button></td>
                         </tr>)
                     }
@@ -38,4 +52,6 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
             </table>
         </>
     )
+
+    nuevaLista;
 }
