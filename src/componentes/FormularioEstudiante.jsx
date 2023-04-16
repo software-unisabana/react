@@ -26,16 +26,16 @@ export const FormularioEstudiante = ({ agregar, modificar, aModificar, modo } ) 
         let nuevoNombre = aModificar.nombre
         let nuevoSemestre = aModificar.semestre
 
-        if(id != ''){
+        if(id !== ''){
 
             nuevoId = id
         }
 
-        if(nombre != ''){
+        if(nombre !== ''){
             nuevoNombre = nombre
         }
 
-        if(semestre != ''){
+        if(semestre !== ''){
             nuevoSemestre = semestre
         }
 
@@ -50,7 +50,7 @@ export const FormularioEstudiante = ({ agregar, modificar, aModificar, modo } ) 
         setSemestre("");
     }
 
-    if (modo == 'Registrar') {
+    if (modo === 'Registrar') {
         return (
             <>
                 <form onSubmit={guardarEstudiante}>
@@ -71,7 +71,7 @@ export const FormularioEstudiante = ({ agregar, modificar, aModificar, modo } ) 
                 </form>
             </>
         )
-    } else if(modo == 'Modificar') {
+    } else if(modo === 'Modificar') {
         return (
             <>
                 <form onSubmit={modificarEstudiante}>

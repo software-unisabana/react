@@ -1,5 +1,6 @@
-export const TablaEstudiante = ({listaEstudiantes, editar, eliminar}) => {
-
+export const TablaEstudiante = ({listaEstudiantes, editar, eliminar, filtrar}) => {
+    
+    let listaTabla = listaEstudiantes.filter((estudiante) => estudiante.nombre.includes(filtrar))
 
     return (
         <>
@@ -14,12 +15,12 @@ export const TablaEstudiante = ({listaEstudiantes, editar, eliminar}) => {
                 </thead>
                 <tbody>
                     {
-                        listaEstudiantes.map((estudiante) => 
+                        listaTabla.map((estudiante) => 
                             <tr key={estudiante.id}>
                                 <td>{estudiante.id}</td>
                                 <td>{estudiante.nombre}</td>
                                 <td>{estudiante.semestre}</td>
-                                <td> 
+                                <td>
                                     <button className="btn btn-info" onClick={(event) => editar(estudiante)}>Editar</button>
                                     <button className="btn btn-danger" onClick={(event) => eliminar(estudiante)}>Eliminar</button>
                                 </td>
