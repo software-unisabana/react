@@ -1,15 +1,21 @@
-
-
-
-
+import { useState } from "react";
 
 export const TablaEstudiante = ({ listaEstudiantes }) => {
+    const [search, setSearch] = useState("");
+    let estudiantesFiltrados = listaEstudiantes
 
-    const editar=()=>{
-        
+    if(search!=""){
+        estudiantesFiltrados= listaEstudiantes.filter((estudiante)=> estudiante.nombre===search);
     }
+
     return (
         <>
+         <div>
+            Buscar estudiante:
+        <input type="text" className="form-control" placeholder="Buscar Estudiante" value={search} onChange={(event) => setSearch(event.target.value)} />
+
+        </div>
+
             <table className="table">
                 <thead>
                     <tr>
@@ -21,11 +27,11 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
                 </thead>
                 <tbody>
                     {
-                        listaEstudiantes.map((estudiante) => <tr key={estudiante.id}>
+                        estudiantesFiltrados.map((estudiante) => <tr key={estudiante.id}>
                             <td>{estudiante.id}</td>
                             <td>{estudiante.nombre}</td>
                             <td>{estudiante.semestre}</td>
-                            <td> <button className="btn btn-info" onClick={editar}>Editar</button></td>
+                            <td> <button className="btn btn-info" >Editar</button></td>
                         </tr>)
                     }
                 </tbody>

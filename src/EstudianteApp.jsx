@@ -3,9 +3,6 @@ import { FormularioEstudiante } from "./componentes/FormularioEstudiante";
 import { TablaEstudiante } from "./componentes/TablaEstudiante";
 
 
-
-//<ListaEstudiantes lista={estudiantes}/>
-
 export const EstudiantesApp = () => {
 
     const [estudiantes, setEstudiantes] = useState([]);
@@ -18,7 +15,7 @@ export const EstudiantesApp = () => {
     return (
         <>
             <FormularioEstudiante agregar={(estu) => { agregarEstudiante(estu) }} />
-            <TablaEstudiante listaEstudiantes={estudiantes} />
+            <TablaEstudiante listaEstudiantes={estudiantes}/>
         </>
     )
 }
