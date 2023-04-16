@@ -13,13 +13,13 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
       row.parentNode.removeChild(row);
   }
 
-  const buscarEstudiantePorId = (id) => {
-    return listaEstudiantes.find((estudiante) => estudiante.id === id);
+  const buscarEstudiantePorNombre = (nombre) => {
+    return listaEstudiantes.find((estudiante) => estudiante.nombre === nombre);
   };
 
-  const buscarEst = (event) => {
+  const buscarEst = (event) => {    
     event.preventDefault();
-    const elementoEncontrado = buscarEstudiantePorId(buscar);
+    const elementoEncontrado = buscarEstudiantePorNombre(buscar);
     setEstudianteEncontrado(elementoEncontrado);
   };
 
