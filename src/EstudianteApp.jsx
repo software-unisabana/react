@@ -7,7 +7,6 @@ import { Alert } from "bootstrap";
 export const EstudiantesApp = () => {
 
     const [estudiantes, setEstudiantes] = useState([]);
-    //const[modificar,setModificar]=useState({});
     const[estado,setEstado]=useState(true); //true es registrar, false es actualizar
     const [buscar,setBuscar]=useState("");
     const [estudianteAct,setEstudianteACT]=useState({})
@@ -32,49 +31,47 @@ export const EstudiantesApp = () => {
     const FiltrolistaEstudiantes= estudiantes.filter((estudiante) =>
     estudiante.nombre.includes(buscar)
     );
-/*
-    const editarStude= (estu)=>{
-        setEstado("modificar");
-        setModificar(estu);
-    }
-    const modificarEstudiante= (infoVieja,infoNueva)=>{
-        let verificacion=true
-        estudiantes.map((estudiante)=>{
-            if (estudiante.id != infoVieja.id && infoNueva.id== estudiante.id ) {
-                <div class="alert alert-danger" role="alert">
-                     Ese id ya lo tiene otro estudiante
-                </div>
-                verificacion=false
-            }
-        })
-        if (verificacion) {
+
+    const VerificarEstudiante = (estudianteAnterior, estudianteACTUALIZADO) => {
+        let validacion=true;
+        estudiantes.map((estudiante) => {
+            if ( estudianteACTUALIZADO.id == estudiante.id && estudiante.id != estudianteAnterior.id){
+                alert('Ese ID ya esta en uso, VUELVA A INTENTARLO')
+                validacion=false
+            } 
+        }) 
+        if (validacion) {
             setEstudiantes(
-                estudiantes.map((estudiante)=>{
-                    if (infoVieja.id == estudiante.id) {
-                        estudiante.id =infoNueva.id
-                        estudiante.nombre= infoNueva.nombre
-                        estudiante.semestre=infoNueva.semestre
+                estudiantes.map((estudiante) => {
+                    if(estudianteAnterior.id == estudiante.id){
+                        estudiante.id = estudianteACTUALIZADO.id
+                        estudiante.nombre = estudianteACTUALIZADO.nombre
+                        estudiante.semestre = estudianteACTUALIZADO.semestre
                     }
                     return(estudiante)
                 })
             )
         }
-        setEstado("registrar")
     }
-    */
+
+        
     return (
         <>
             <FormularioEstudiante agregar={(estu) => agregarEstudiante(estu)} 
             estudiante={estudianteAct} 
+            actEstudiante={(estudiante, nuevoEstudiante) => { VerificarEstudiante(estudiante,nuevoEstudiante) }}
             estado={estado} 
             setEstado={(est)=>{setEstado(est)}}/>
-            <Buscador buscar={buscar} setBuscar={(busqueda)=>setBuscar(busqueda)}/>   
-            <TablaEstudiante eliminarEstudiantes={(estuia)=>{eliminar(estuia)}} 
+            <Buscador 
+            buscar={buscar} 
+            setBuscar={(busqueda)=>setBuscar(busqueda)}/>   
+            <TablaEstudiante 
+            eliminarEstudiantes={(estuia)=>{eliminar(estuia)}} 
             FiltrolistaEstudiantes={FiltrolistaEstudiantes} 
             editar={(estudiante)=>{
-                setEstudianteACT(estudiante) 
                 setEstado(!estado)
-                }}/>  
+                setEstudianteACT(estudiante)
+            }}/>  
         </>
     )
 }
