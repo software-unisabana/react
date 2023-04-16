@@ -1,14 +1,10 @@
 import { useState } from "react"
 
-
-
-
-
-
 export const FormularioEstudiante = ({ agregar }) => {
     const [id, setId] = useState("");
     const [nombre, setNombre] = useState("");
     const [semestre, setSemestre] = useState("");
+    const [buscar, setBuscar] = useState("");
 
     const guardarEstudiante = (event) => {
         event.preventDefault();
@@ -16,13 +12,17 @@ export const FormularioEstudiante = ({ agregar }) => {
         let estudiante = {
             id: id,
             nombre: nombre,
-            semestre: semestre
+            semestre: semestre,
         }
         agregar(estudiante)
         setId("");
         setNombre("");
         setSemestre("");
+    
     }
+    
+    
+    
 
     return (
         <>
@@ -33,13 +33,12 @@ export const FormularioEstudiante = ({ agregar }) => {
                 </div>
                 <div className="form-group">
                     <label htmlFor="nombre">Nombre</label>
-                    <input type="text" className="form-control" id="nombre" placeholder="nombre" value={nombre} onChange={(event) => setNombre(event.target.value)} />
+                    <input type="text" className="form-control" id="nombre" placeholder="Nombre" value={nombre} onChange={(event) => setNombre(event.target.value)} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="semestre">Semestre</label>
-                    <input type="text" className="form-control" id="semestre" placeholder="semestre" value={semestre} onChange={(event) => setSemestre(event.target.value)} />
+                    <input type="text" className="form-control" id="semestre" placeholder="Semestre" value={semestre} onChange={(event) => setSemestre(event.target.value)} />
                 </div>
-
                 <button type="submit" className="btn btn-primary">Registrar</button>
             </form>
         </>
