@@ -1,6 +1,6 @@
 export const TablaEstudiante = ({listaEstudiantes, editar, eliminar, filtrar}) => {
     
-    let listaTabla = listaEstudiantes.filter((estudiante) => estudiante.nombre.includes(filtrar))
+    listaEstudiantes = listaEstudiantes.filter((estudiante) => estudiante.nombre.includes(filtrar))
 
     return (
         <>
@@ -15,7 +15,7 @@ export const TablaEstudiante = ({listaEstudiantes, editar, eliminar, filtrar}) =
                 </thead>
                 <tbody>
                     {
-                        listaTabla.map((estudiante) => 
+                        listaEstudiantes.map((estudiante) => 
                             <tr key={estudiante.id}>
                                 <td>{estudiante.id}</td>
                                 <td>{estudiante.nombre}</td>
