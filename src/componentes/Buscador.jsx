@@ -4,6 +4,7 @@ export const Buscador=({buscar,setBuscar})=>{
     return (
         <>
         <div className="form-group ">
+
             <label htmlFor="id">BUSCAR</label>
                 <input 
                     type="text" 
