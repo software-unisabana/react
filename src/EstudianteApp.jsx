@@ -23,13 +23,6 @@ export const EstudiantesApp = () => {
             setEstudiantes([...estudiantes, estudiante])
         }
     }
-    const eliminar=(estuia)=>{
-        setEstudiantes(estudiantes.filter((estudiante) => estudiante.id!==estuia.id))
-    }
-    const FiltrolistaEstudiantes= estudiantes.filter((estudiante) =>
-    estudiante.nombre.includes(buscar)
-    );
-
     const VerificarEstudiante = (estudianteAnterior, estudianteACTUALIZADO) => {
         let validacion=true;
         estudiantes.map((estudiante) => {
