@@ -8,7 +8,7 @@ export const EstudiantesApp = () => {
     const [estudiantes, setEstudiantes] = useState([]);
     const [aModificar, setEstudiante] = useState({});
     const [modo, setModo] = useState('Registrar');
-    let filtro = ""
+    const [filtro, setFiltro] = useState('');
 
     const agregarEstudiante = (estudiante) => {
         let verificado = true
@@ -26,7 +26,7 @@ export const EstudiantesApp = () => {
     }
 
     const modLista = (terminoBusqueda) =>{
-        filtro = terminoBusqueda
+        setFiltro(terminoBusqueda)
     }
 
     const eliminarEstudiante = (estudiante) => {
@@ -79,12 +79,12 @@ export const EstudiantesApp = () => {
             /> <br/>
 
             <BarraBusqueda
-                filtrar = {filtro}
-            />
+                filtrar = {(termino) => {modLista(termino)} }
+            /> <br/>
 
             <TablaEstudiante 
                 listaEstudiantes={estudiantes}
-                filtrar = {filtro}
+                filtrar={filtro}
                 editar={(estu) => { editarEstudiante(estu) }}
                 eliminar={(estu) => { eliminarEstudiante(estu) }}
             />

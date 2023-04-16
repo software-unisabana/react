@@ -1,5 +1,6 @@
-export const TablaEstudiante = ({listaEstudiantes, editar, eliminar, filtro}) => {
-
+export const TablaEstudiante = ({listaEstudiantes, editar, eliminar, filtrar}) => {
+    
+    let listaTabla = listaEstudiantes.filter((estudiante) => estudiante.nombre.includes(filtrar))
 
     return (
         <>
@@ -14,28 +15,16 @@ export const TablaEstudiante = ({listaEstudiantes, editar, eliminar, filtro}) =>
                 </thead>
                 <tbody>
                     {
-                        listaEstudiantes.map((estudiante) =>{
-                            if (estudiante.nombre.includes(filtro) || filtro == "") {
-                                <tr key={estudiante.id}>
-                                    <td>{estudiante.id}</td>
-                                    <td>{estudiante.nombre}</td>
-                                    <td>{estudiante.semestre}</td>
-                                    <td>
-                                        <button className="btn btn-info" onClick={(event) => editar(estudiante)}>Editar</button>
-                                        <button className="btn btn-danger" onClick={(event) => eliminar(estudiante)}>Eliminar</button>
-                                    </td>
-                                </tr>
-                            }
-                        } 
-                            // <tr key={estudiante.id}>
-                            //     <td>{estudiante.id}</td>
-                            //     <td>{estudiante.nombre}</td>
-                            //     <td>{estudiante.semestre}</td>
-                            //     <td> 
-                            //         <button className="btn btn-info" onClick={(event) => editar(estudiante)}>Editar</button>
-                            //         <button className="btn btn-danger" onClick={(event) => eliminar(estudiante)}>Eliminar</button>
-                            //     </td>
-                            // </tr>
+                        listaTabla.map((estudiante) => 
+                            <tr key={estudiante.id}>
+                                <td>{estudiante.id}</td>
+                                <td>{estudiante.nombre}</td>
+                                <td>{estudiante.semestre}</td>
+                                <td>
+                                    <button className="btn btn-info" onClick={(event) => editar(estudiante)}>Editar</button>
+                                    <button className="btn btn-danger" onClick={(event) => eliminar(estudiante)}>Eliminar</button>
+                                </td>
+                            </tr>
                         )
                     }
                 </tbody>
