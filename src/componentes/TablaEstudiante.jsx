@@ -1,13 +1,19 @@
-
-
+export const {eliminarPorId} =TablaEstudiante;
 
 
 
 export const TablaEstudiante = ({ listaEstudiantes }) => {
 
-    const editar=()=>{
-        
-    }
+    const estudiantes=listaEstudiantes;
+    
+
+    const eliminarPorId = (id) => {
+        const nuevaLista = estudiantes.filter((estudiante) => estudiante.id !== id);
+        eliminarEstudiante(nuevaLista);
+    };
+
+
+
     return (
         <>
             <table className="table">
@@ -25,11 +31,13 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
                             <td>{estudiante.id}</td>
                             <td>{estudiante.nombre}</td>
                             <td>{estudiante.semestre}</td>
-                            <td> <button className="btn btn-info" onClick={editar}>Editar</button></td>
+                            <td> <button className="btn btn-info" onClick={ ()=> eliminarPorId (estudiante.id) }>Eliminar</button></td>
                         </tr>)
                     }
                 </tbody>
             </table>
         </>
     )
+
+    nuevaLista;
 }
