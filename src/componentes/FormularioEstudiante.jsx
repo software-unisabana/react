@@ -10,6 +10,15 @@ export const FormularioEstudiante = ({ agregar}) => {
     const guardarEstudiante = (event) => {
         event.preventDefault();
 
+        if (isNaN(id) || id == "") {
+            alert("El ID del estudiante debe ser un número");
+            return;
+        }
+        if (id.length < 6 || id.length > 10){
+            alert("El ID debe tener minimo 6 y maximo 10")
+            return;
+        }
+
         let estudiante = {
             id: id,
             nombre: nombre,
