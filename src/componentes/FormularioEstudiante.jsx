@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export const FormularioEstudiante = ({ agregar, modificar, aModificar, modo } ) => {
+export const FormularioEstudiante = ({ agregar, modificar, aModificar, modo }) => {
     const [id, setId] = useState("");
     const [nombre, setNombre] = useState("");
     const [semestre, setSemestre] = useState("");
@@ -12,17 +12,17 @@ export const FormularioEstudiante = ({ agregar, modificar, aModificar, modo } ) 
             nombre: nombre,
             semestre: semestre
         }
-        if((estudiante.id.toString().length >= 6) && (estudiante.id.toString().length <= 10)){
-            if(estudiante.nombre.length >= 3){
+        if ((estudiante.id.toString().length >= 6) && (estudiante.id.toString().length <= 10)) {
+            if (estudiante.nombre.length >= 3) {
                 agregar(estudiante)
                 setId("");
                 setNombre("");
                 setSemestre("");
             }
-            else{
+            else {
                 alert("Nombre inválido")
             }
-        }else{
+        } else {
             alert("ID inválido")
         }
     }
@@ -34,16 +34,16 @@ export const FormularioEstudiante = ({ agregar, modificar, aModificar, modo } ) 
         let nuevoNombre = aModificar.nombre
         let nuevoSemestre = aModificar.semestre
 
-        if(id !== ''){
+        if (id !== '') {
 
             nuevoId = id
         }
 
-        if(nombre !== ''){
+        if (nombre !== '') {
             nuevoNombre = nombre
         }
 
-        if(semestre !== ''){
+        if (semestre !== '') {
             nuevoSemestre = semestre
         }
 
@@ -52,10 +52,20 @@ export const FormularioEstudiante = ({ agregar, modificar, aModificar, modo } ) 
             nombre: nuevoNombre,
             semestre: nuevoSemestre
         }
-        modificar(aModificar, estudiante)
-        setId("");
-        setNombre("");
-        setSemestre("");
+
+        if ((estudiante.id.toString().length >= 6) && (estudiante.id.toString().length <= 10)) {
+            if (estudiante.nombre.length >= 3) {
+                modificar(aModificar, estudiante)
+                setId("");
+                setNombre("");
+                setSemestre("");
+            }
+            else {
+                alert("Nombre inválido")
+            }
+        } else {
+            alert("ID inválido")
+        }
     }
 
     if (modo === 'Registrar') {
@@ -65,37 +75,37 @@ export const FormularioEstudiante = ({ agregar, modificar, aModificar, modo } ) 
                     <div className="form-group ">
                         <label htmlFor="id">ID Estudiante</label>
                         <input type="number" className="form-control" id="id" placeholder={'id'} value={id} onChange={(event) => setId(event.target.value)} />
-                    </div> <br/>
+                    </div> <br />
                     <div className="form-group">
                         <label htmlFor="nombre">Nombre</label>
                         <input type="text" className="form-control" id="nombre" placeholder={'nombre'} value={nombre} onChange={(event) => setNombre(event.target.value)} />
-                    </div> <br/>
+                    </div> <br />
                     <div className="form-group">
                         <label htmlFor="semestre">Semestre</label>
                         <input type="text" className="form-control" id="semestre" placeholder={'semestre'} value={semestre} onChange={(event) => setSemestre(event.target.value)} />
-                    </div> <br/>
-    
+                    </div> <br />
+
                     <button type="submit" className="btn btn-primary"> Registrar </button>
                 </form>
             </>
         )
-    } else if(modo === 'Modificar') {
+    } else if (modo === 'Modificar') {
         return (
             <>
                 <form onSubmit={modificarEstudiante}>
                     <div className="form-group ">
                         <label htmlFor="id">ID Estudiante</label>
                         <input type="id" className="form-control" id="id" placeholder={aModificar.id} value={id} onChange={(event) => setId(event.target.value)} />
-                    </div> <br/>
+                    </div> <br />
                     <div className="form-group">
                         <label htmlFor="nombre">Nombre</label>
                         <input type="text" className="form-control" id="nombre" placeholder={aModificar.nombre} value={nombre} onChange={(event) => setNombre(event.target.value)} />
-                    </div> <br/>
+                    </div> <br />
                     <div className="form-group">
                         <label htmlFor="semestre">Semestre</label>
                         <input type="text" className="form-control" id="semestre" placeholder={aModificar.semestre} value={semestre} onChange={(event) => setSemestre(event.target.value)} />
-                    </div> <br/>
-    
+                    </div> <br />
+
                     <button type="submit" className="btn btn-info"> Modificar </button>
                 </form>
             </>
