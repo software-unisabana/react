@@ -66,8 +66,8 @@ const estructuraForm = (
               className="form-control"
               id="id"
               placeholder={valorID}
-              value={estudiante.id}
-              onChange={(event) => [...estudiante,estudiante.id=event.target.value]}
+              value={id}
+              onChange={(event) => setId(event.target.value)}
             />
         </div>
         <div className="form-group">
@@ -78,8 +78,8 @@ const estructuraForm = (
               className="form-control"
               id="nombre"
               placeholder={valorNombre}
-              value={estudiante.nombre}
-              onChange={(event) => [...estudiante,estudiante.nombre=event.target.value]}
+              value={nombre}
+              onChange={(event) => setNombre(event.target.value)}
             />
         </div>
         <div className="form-group">
@@ -90,8 +90,8 @@ const estructuraForm = (
               className="form-control"
               id="semestre"
               placeholder={"semestre"}
-              value={estudiante.semestre}
-              onChange={(event) => [...estudiante,estudiante.semestre=event.target.value]}
+              value={semestre}
+              onChange={(event) => setSemestre(event.target.value)}
             />
         </div>
 

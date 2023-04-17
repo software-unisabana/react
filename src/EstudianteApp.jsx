@@ -64,7 +64,7 @@ export const EstudiantesApp = () => {
             estado={estado} 
             setEstado={(est)=>{setEstado(est)}}
             id={id}
-            setid={(id)=>setId(id)}
+            setId={(id)=>setId(id)}
             nombre={nombre}
             setNombre={(nombre)=>setNombre(nombre)}
             semestre={semestre}
