@@ -42,7 +42,7 @@ export const FormularioEstudiante = ({ agregar , buscarName }) => {
                 </div>
                 <div>
                     <label htmlFor="semestre">Escoge tu semestre:</label>
-                    <select name="semestre" id="semestre" value={semestre} onChange={(event) =>  {setSemestre(event.target.value)}}>
+                    <select name="semestre" id="semestre" value={semestre} className="form-select" aria-label="Default select example" onChange={(event) =>  {setSemestre(event.target.value)}}>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3" >3</option>
@@ -57,7 +57,7 @@ export const FormularioEstudiante = ({ agregar , buscarName }) => {
                 </div>
                 <div>
                     <label htmlFor="facultad">Escoge tu Facultad:</label>
-                    <select name="facultad" id="facultad" value={facultad} onChange={(event) =>  {setFacultad(event.target.value)}}>
+                    <select name="facultad" id="facultad" value={facultad} className="form-select" aria-label="Default select example" onChange={(event) =>  {setFacultad(event.target.value)}}>
                         <option value="Comunicacion">Comunicacion</option>
                         <option value="Derecho">Derecho</option>
                         <option value="Educacion">Educacion</option>
@@ -65,7 +65,7 @@ export const FormularioEstudiante = ({ agregar , buscarName }) => {
                         <option value="Medicina">Medicina</option>
                     </select>
                 </div>
-
+                <br />
                 <button type="submit" className="btn btn-primary">Registrar</button>
             </form>
             
