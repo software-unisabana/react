@@ -3,10 +3,8 @@
 import { useEffect, useState } from "react";
  
 
-export const FormularioEstudiante = ({agregar,estudiante,actEstudiante,estado,setEstado,id,setId,nombre,setNombre,semestre,setSemestre}) => {
+export const FormularioEstudiante = ({agregar,estudiante,actEstudiante,estado,setEstado,id,setId,nombre,setNombre,semestre,setSemestre,facultad,setFacultad}) => {
     
-    
-const[facultad, setFacultad]=useState("");
 
 
 
@@ -22,15 +20,20 @@ const actualizarEst = (eve) => {
     if (semestre == "") {
     return alert("INGRESE UN VALOR EN SEMESTRE");
     }
+    if (facultad=""){
+        return alert("ingrese un valor de facultad")
+    }
     let estudianteNuevo = {
     id: id,
     nombre: nombre,
     semestre: semestre,
+    facultad:facultad,
     };
     actEstudiante(estudiante, estudianteNuevo);
     setId("");
     setNombre("");
     setSemestre("");
+    setFacultad("");
     setEstado(!estado);
 };
 const guardarEstudiante = (event) => {
@@ -44,15 +47,20 @@ const guardarEstudiante = (event) => {
     if (semestre == "") {
     return alert("INGRESE UN VALOR EN SEMESTRE");
     }
+    if (facultad=""){
+        return alert("ingrese un valor de facultad")
+    }
     let estudiante = {
     id: id,
     nombre: nombre,
     semestre: semestre,
+    facultad: facultad,
     };
     agregar(estudiante);
     setId("");
     setNombre("");
     setSemestre("");
+    setFacultad("");
 };
 const estructuraForm = (
     dondeGuardar,
@@ -124,7 +132,7 @@ const estructuraForm = (
                id="facultad"
                placeholder={"facultad"}
                value={facultad}
-               onChange={(event) => setFacultad(event.target.value)}>
+               onChange={(event) => setFacultad (event.target.value)}>
                 <option >Medicina</option>
                 <option >Derecho</option>
                 <option >Ingeniería</option>
@@ -163,6 +171,7 @@ if (estado) {
           estudiante.id,
           estudiante.nombre,
           estudiante.semestre,
+          estudiante.facultad,
           "Actualizar"
         )}
     </>
