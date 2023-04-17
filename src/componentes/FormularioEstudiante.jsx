@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 export const FormularioEstudiante = ({ agregar, modificar, aModificar, modo } ) => {
     const [id, setId] = useState("");
     const [nombre, setNombre] = useState("");
-    const [semestre, setSemestre] = useState("");
+    const [semestre, setSemestre] = useState("1");
 
     const guardarEstudiante = (event) => {
         event.preventDefault();
@@ -62,9 +62,21 @@ export const FormularioEstudiante = ({ agregar, modificar, aModificar, modo } ) 
                         <label htmlFor="nombre">Nombre</label>
                         <input type="text" className="form-control" id="nombre" placeholder={'nombre'} value={nombre} onChange={(event) => setNombre(event.target.value)} />
                     </div> <br/>
-                    <div className="form-group">
-                        <label htmlFor="semestre">Semestre</label>
-                        <input type="text" className="form-control" id="semestre" placeholder={'semestre'} value={semestre} onChange={(event) => setSemestre(event.target.value)} />
+
+                    <div>
+                        <label htmlFor="semestre">Semestre</label> <br/>
+                        <select id="semestre" value={semestre} onChange={(event) => setSemestre(event.target.value)}>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
                     </div> <br/>
     
                     <button type="submit" className="btn btn-primary"> Registrar </button>
@@ -83,9 +95,22 @@ export const FormularioEstudiante = ({ agregar, modificar, aModificar, modo } ) 
                         <label htmlFor="nombre">Nombre</label>
                         <input type="text" className="form-control" id="nombre" placeholder={aModificar.nombre} value={nombre} onChange={(event) => setNombre(event.target.value)} />
                     </div> <br/>
-                    <div className="form-group">
-                        <label htmlFor="semestre">Semestre</label>
-                        <input type="text" className="form-control" id="semestre" placeholder={aModificar.semestre} value={semestre} onChange={(event) => setSemestre(event.target.value)} />
+
+                     <div>
+                        <label htmlFor="semestre">Semestre</label> <br/>
+                        <select id="semestre" value={semestre} onChange={(event) => setSemestre(event.target.value)}>
+                            <option value="" selected disabled hidden>{ aModificar.semestre } </option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
                     </div> <br/>
     
                     <button type="submit" className="btn btn-info"> Modificar </button>
