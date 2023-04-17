@@ -52,7 +52,7 @@ export const FormularioEstudiante = ({ agregar}) => {
                     <label htmlFor="semestre">Semestre</label>
                     <br></br>
                     {/* <input type="text" className="form-control" id="semestre" placeholder="semestre" value={semestre} onChange={(event) => setSemestre(event.target.value)} /> */}
-                    <select name="semestre" id="semestre" placeholder="semestre" value={semestre} onChange={(event) => setSemestre(event.target.value)}>
+                    <select ClassName="form-control" id="semestre" placeholder="semestre" value={semestre} onChange={(event) => setSemestre(event.target.value)}>
                     <option value="">--Seleccione el semestre--</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -69,7 +69,7 @@ export const FormularioEstudiante = ({ agregar}) => {
                 <div className="form-group">
                     <label htmlFor="facultad">Facultad</label>
                     <br></br>
-                    <select name="facultad" id="facultad" placeholder="facultad" value={facultad} onChange={(event) => setFacultad(event.target.value)}>
+                    <select ClassName="form-control" id="facultad" placeholder="facultad" value={facultad} onChange={(event) => setFacultad(event.target.value)}>
                     <option value="">--Seleccione la facultad--</option>
                     <option value="Ingenieria">Ingenieria</option>
                     <option value="Medicina">Medicina</option>
