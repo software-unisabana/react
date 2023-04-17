@@ -11,23 +11,23 @@ export const FormularioEstudiante = ({agregar,estudiante,actEstudiante,estado,se
 
 const actualizarEst = (eve) => {
     eve.preventDefault();
-    if (id == "") {
+    if (id === "") {
     return alert("INGRESE UN VALOR EN ID");
     }
-    if (nombre == "") {
+    if (nombre === "") {
     return alert("INGRESE UN VALOR EN NOMBRE");
     }
-    if (semestre == "") {
+    if (semestre === "") {
     return alert("INGRESE UN VALOR EN SEMESTRE");
     }
-    if (facultad=""){
+    if (facultad===""){
         return alert("ingrese un valor de facultad")
     }
     let estudianteNuevo = {
     id: id,
     nombre: nombre,
     semestre: semestre,
-    facultad:facultad,
+    facultad: facultad,
     };
     actEstudiante(estudiante, estudianteNuevo);
     setId("");
@@ -47,7 +47,7 @@ const guardarEstudiante = (event) => {
     if (semestre == "") {
     return alert("INGRESE UN VALOR EN SEMESTRE");
     }
-    if (facultad=""){
+    if (facultad===""){
         return alert("ingrese un valor de facultad")
     }
     let estudiante = {
@@ -107,7 +107,7 @@ const estructuraForm = (
             name="semestre"
             className="form-control"
             id="semestre"
-            placeholder={"semestre"}
+            placeholder={valorSemestre}
             value={semestre}
             onChange={(event) => setSemestre(event.target.value)}
             >
@@ -132,7 +132,7 @@ const estructuraForm = (
                id="facultad"
                placeholder={"facultad"}
                value={facultad}
-               onChange={(event) => setFacultad (event.target.value)}>
+               onChange={(event) => setFacultad(event.target.value)}>
                 <option >Medicina</option>
                 <option >Derecho</option>
                 <option >Ingeniería</option>
@@ -171,7 +171,6 @@ if (estado) {
           estudiante.id,
           estudiante.nombre,
           estudiante.semestre,
-          estudiante.facultad,
           "Actualizar"
         )}
     </>
