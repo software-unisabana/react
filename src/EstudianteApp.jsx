@@ -11,7 +11,7 @@ export const EstudiantesApp = () => {
     const [id, setId] = useState("");
     const [nombre, setNombre] = useState("");
     const [semestre, setSemestre] = useState(1);
-    const [facultad,setFacultad]=useState("medicina");
+    const [facultad,setFacultad]=useState("");
 
     const agregarEstudiante = (estudiante) => {
         let verificacion=true
