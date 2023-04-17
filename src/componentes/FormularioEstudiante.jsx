@@ -1,10 +1,9 @@
+//Use Effect se usa para cargar una cosa solo una vez cuando la pagina inicie. 
 
 import { useEffect, useState } from "react";
 
-export const FormularioEstudiante = ({agregar,estudiante,actEstudiante,estado,setEstado,}) => {
-const [id, setId] = useState("");
-const [nombre, setNombre] = useState("");
-const [semestre, setSemestre] = useState("");
+export const FormularioEstudiante = ({agregar,estudiante,actEstudiante,estado,setEstado,id,setId,nombre,setNombre,semestre,setSemestre}) => {
+
 
 const actualizarEst = (eve) => {
     eve.preventDefault();
@@ -67,8 +66,8 @@ const estructuraForm = (
               className="form-control"
               id="id"
               placeholder={valorID}
-              value={id}
-              onChange={(event) => setId(event.target.value)}
+              value={estudiante.id}
+              onChange={(event) => [...estudiante,estudiante.id=event.target.value]}
             />
         </div>
         <div className="form-group">
@@ -79,8 +78,8 @@ const estructuraForm = (
               className="form-control"
               id="nombre"
               placeholder={valorNombre}
-              value={nombre}
-              onChange={(event) => setNombre(event.target.value)}
+              value={estudiante.nombre}
+              onChange={(event) => [...estudiante,estudiante.nombre=event.target.value]}
             />
         </div>
         <div className="form-group">
@@ -90,9 +89,9 @@ const estructuraForm = (
               name="semestre"
               className="form-control"
               id="semestre"
-              placeholder={valorSemestre}
-              value={semestre}
-              onChange={(event) => setSemestre(event.target.value)}
+              placeholder={"semestre"}
+              value={estudiante.semestre}
+              onChange={(event) => [...estudiante,estudiante.semestre=event.target.value]}
             />
         </div>
 
@@ -111,7 +110,7 @@ if (estado) {
           "id",
           "nombre",
           "semestre",
-          "Resgistrar"
+          "Registrar"
         )}
     </>
     );
