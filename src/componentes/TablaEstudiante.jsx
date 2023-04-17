@@ -66,32 +66,54 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
 
       {
       estudianteEncontradoFac ? (
-        <div>
-          <h3>Estudiante encontrado:</h3>
-          <table className="table">
-            <thead>
-              <tr>
-                <th scope="col">Id Estudiante</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Semestre</th>
-                <th scope="col">Facultad</th>
-              </tr>
-            </thead>
-            <tbody>
-            {listaEstudiantes.map((estudiante) => (
-                <tr key={estudiante.id}>
-                  <td>{estudiante.id}</td>
-                  <td>{estudiante.nombre}</td>
-                  <td>{estudiante.semestre}</td>
-                  <td>{estudiante.facultad}</td>
-                  
+        // <div>
+        //   <h3>Estudiante encontrado:</h3>
+        //   <table className="table">
+        //     <thead>
+        //       <tr>
+        //         <th scope="col">Id Estudiante</th>
+        //         <th scope="col">Nombre</th>
+        //         <th scope="col">Semestre</th>
+        //         <th scope="col">Facultad</th>
+        //       </tr>
+        //     </thead>
+        //     <tbody>
+        //     {listaEstudiantes.map((estudiante) => (
+        //         <tr key={estudiante.facultad}>
+        //           <td>{estudiante.id}</td>
+        //           <td>{estudiante.nombre}</td>
+        //           <td>{estudiante.semestre}</td>
+        //           <td>{estudiante.facultad}</td>
+        //         </tr>
+        //       ))}
+        //     </tbody>
+        //   </table>
+        //   <button className="btn btn-info" onClick={limpiarBusqueda}> Limpiar búsqueda
+        //   </button>
+        // </div>
+          <div>
+            <h3>Estudiante encontrado:</h3>
+            <table className="table">
+              <thead>
+                <tr>
+                  <th scope="col">Id Estudiante</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Semestre</th>
+                  <th scope="col">Facultad</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-          <button className="btn btn-info" onClick={limpiarBusqueda}> Limpiar búsqueda
-          </button>
-        </div>
+              </thead>
+              <tbody>
+                <tr key={estudianteEncontradoFac.id}>
+                  <td>{estudianteEncontradoFac.id}</td>
+                  <td>{estudianteEncontradoFac.nombre}</td>
+                  <td>{estudianteEncontradoFac.semestre}</td>
+                  <td>{estudianteEncontradoFac.facultad}</td>
+                </tr>
+              </tbody>
+            </table>
+            <button className="btn btn-info" onClick={limpiarBusqueda}> Limpiar búsqueda
+            </button>
+          </div>
       ) : (
         <div>
           <table className="table">
@@ -106,7 +128,7 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
             </thead>
             <tbody>
               {listaEstudiantes.map((estudiante) => (
-                <tr key={estudiante.id}>
+                <tr key={estudiante.facultad}>
                   <td>{estudiante.id}</td>
                   <td>{estudiante.nombre}</td>
                   <td>{estudiante.semestre}</td>
