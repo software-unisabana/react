@@ -7,7 +7,10 @@ export const EstudiantesApp = () => {
     const [estudiantes, setEstudiantes] = useState([]);
     const[estado,setEstado]=useState(true); //true es registrar, false es actualizar
     const [buscar,setBuscar]=useState("");
-    const [estudianteAct,setEstudianteACT]=useState({})
+    const [estudianteAct,setEstudianteACT]=useState([]);
+    const [id, setId] = useState("");
+    const [nombre, setNombre] = useState("");
+    const [semestre, setSemestre] = useState("");
 
     const agregarEstudiante = (estudiante) => {
         let verificacion=true
@@ -59,7 +62,14 @@ export const EstudiantesApp = () => {
             estudiante={estudianteAct} 
             actEstudiante={(estudiante, nuevoEstudiante) => { VerificarEstudiante(estudiante,nuevoEstudiante) }}
             estado={estado} 
-            setEstado={(est)=>{setEstado(est)}}/>
+            setEstado={(est)=>{setEstado(est)}}
+            id={id}
+            setId={(id)=>setId(id)}
+            nombre={nombre}
+            setNombre={(nombre)=>setNombre(nombre)}
+            semestre={semestre}
+            setSemestre={(semestre)=>setSemestre(semestre)}
+            />            
             <Buscador 
             buscar={buscar} 
             setBuscar={(busqueda)=>setBuscar(busqueda)}/>   
@@ -68,8 +78,14 @@ export const EstudiantesApp = () => {
             FiltrolistaEstudiantes={FiltrolistaEstudiantes} 
             editar={(estudiante)=>{
                 setEstado(!estado)
+                setId(estudiante.id)
+                setNombre(estudiante.nombre)
+                setSemestre(estudiante.semestre)
                 setEstudianteACT(estudiante)
-            }}/>  
+            }}
+            />
+              
         </>
     )
 }
+
