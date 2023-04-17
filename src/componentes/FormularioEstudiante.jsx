@@ -41,18 +41,18 @@ export const FormularioEstudiante = ({ agregar}) => {
         <>
             <form onSubmit={guardarEstudiante}>
                 <div className="form-group ">
-                    <label htmlFor="id">ID Estudiante</label>
+                <label class="input-group-text" for="inputGroupSelect01">Id Estudiante</label>
                     <input type="id" className="form-control" id="id" placeholder="Ingrese id" value={id} onChange={(event) => setId(event.target.value)} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="nombre">Nombre</label>
+                <label class="input-group-text" for="inputGroupSelect01">Nombre</label>
                     <input type="text" className="form-control" id="nombre" placeholder="Nombre" value={nombre} onChange={(event) => setNombre(event.target.value)} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="semestre">Semestre</label>
+                <label class="input-group-text" for="inputGroupSelect01">Semestre</label>
                     <br></br>
                     {/* <input type="text" className="form-control" id="semestre" placeholder="semestre" value={semestre} onChange={(event) => setSemestre(event.target.value)} /> */}
-                    <select ClassName="form-control" id="semestre" placeholder="semestre" value={semestre} onChange={(event) => setSemestre(event.target.value)}>
+                    <select class="custom-select" ClassName="form-control" id="semestre" placeholder="semestre" value={semestre} onChange={(event) => setSemestre(event.target.value)}>
                     <option value="">--Seleccione el semestre--</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
