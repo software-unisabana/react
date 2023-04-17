@@ -12,11 +12,16 @@ export const FormularioEstudiante = ({ agregar, modificar, aModificar, modo } ) 
             nombre: nombre,
             semestre: semestre
         }
-        if(typeof(estudiante.id) === 'number' && (estudiante.id.toString().length >= 6) && (estudiante.id.toString().length <= 10)){
-            agregar(estudiante)
-            setId("");
-            setNombre("");
-            setSemestre("");
+        if((estudiante.id.toString().length >= 6) && (estudiante.id.toString().length <= 10)){
+            if(estudiante.nombre.length >= 3){
+                agregar(estudiante)
+                setId("");
+                setNombre("");
+                setSemestre("");
+            }
+            else{
+                alert("Nombre inválido")
+            }
         }else{
             alert("ID inválido")
         }
@@ -59,7 +64,7 @@ export const FormularioEstudiante = ({ agregar, modificar, aModificar, modo } ) 
                 <form onSubmit={guardarEstudiante}>
                     <div className="form-group ">
                         <label htmlFor="id">ID Estudiante</label>
-                        <input type="id" className="form-control" id="id" placeholder={'id'} value={id} onChange={(event) => setId(event.target.value)} />
+                        <input type="number" className="form-control" id="id" placeholder={'id'} value={id} onChange={(event) => setId(event.target.value)} />
                     </div> <br/>
                     <div className="form-group">
                         <label htmlFor="nombre">Nombre</label>
