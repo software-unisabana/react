@@ -1,22 +1,30 @@
 import { useEffect, useState } from "react"
 
-export const FormularioEstudiante = ({ agregar, modificar, aModificar, modo } ) => {
+export const FormularioEstudiante = ({ agregar, modificar, aModificar, modo }) => {
     const [id, setId] = useState("");
     const [nombre, setNombre] = useState("");
     const [semestre, setSemestre] = useState("1");
 
     const guardarEstudiante = (event) => {
         event.preventDefault();
-
         let estudiante = {
             id: id,
             nombre: nombre,
             semestre: semestre
         }
-        agregar(estudiante)
-        setId("");
-        setNombre("");
-        setSemestre("");
+        if ((estudiante.id.toString().length >= 6) && (estudiante.id.toString().length <= 10)) {
+            if (estudiante.nombre.length >= 3) {
+                agregar(estudiante)
+                setId("");
+                setNombre("");
+                setSemestre("");
+            }
+            else {
+                alert("Nombre inválido")
+            }
+        } else {
+            alert("ID inválido")
+        }
     }
 
     const modificarEstudiante = (event) => {
@@ -26,16 +34,16 @@ export const FormularioEstudiante = ({ agregar, modificar, aModificar, modo } ) 
         let nuevoNombre = aModificar.nombre
         let nuevoSemestre = aModificar.semestre
 
-        if(id !== ''){
+        if (id !== '') {
 
             nuevoId = id
         }
 
-        if(nombre !== ''){
+        if (nombre !== '') {
             nuevoNombre = nombre
         }
 
-        if(semestre !== ''){
+        if (semestre !== '') {
             nuevoSemestre = semestre
         }
 
@@ -44,10 +52,20 @@ export const FormularioEstudiante = ({ agregar, modificar, aModificar, modo } ) 
             nombre: nuevoNombre,
             semestre: nuevoSemestre
         }
-        modificar(aModificar, estudiante)
-        setId("");
-        setNombre("");
-        setSemestre("");
+
+        if ((estudiante.id.toString().length >= 6) && (estudiante.id.toString().length <= 10)) {
+            if (estudiante.nombre.length >= 3) {
+                modificar(aModificar, estudiante)
+                setId("");
+                setNombre("");
+                setSemestre("");
+            }
+            else {
+                alert("Nombre inválido")
+            }
+        } else {
+            alert("ID inválido")
+        }
     }
 
     if (modo === 'Registrar') {
@@ -56,8 +74,8 @@ export const FormularioEstudiante = ({ agregar, modificar, aModificar, modo } ) 
                 <form onSubmit={guardarEstudiante}>
                     <div className="form-group ">
                         <label htmlFor="id">ID Estudiante</label>
-                        <input type="id" className="form-control" id="id" placeholder={'id'} value={id} onChange={(event) => setId(event.target.value)} />
-                    </div> <br/>
+                        <input type="number" className="form-control" id="id" placeholder={'id'} value={id} onChange={(event) => setId(event.target.value)} />
+                    </div> <br />
                     <div className="form-group">
                         <label htmlFor="nombre">Nombre</label>
                         <input type="text" className="form-control" id="nombre" placeholder={'nombre'} value={nombre} onChange={(event) => setNombre(event.target.value)} />
@@ -83,14 +101,14 @@ export const FormularioEstudiante = ({ agregar, modificar, aModificar, modo } ) 
                 </form>
             </>
         )
-    } else if(modo === 'Modificar') {
+    } else if (modo === 'Modificar') {
         return (
             <>
                 <form onSubmit={modificarEstudiante}>
                     <div className="form-group ">
                         <label htmlFor="id">ID Estudiante</label>
                         <input type="id" className="form-control" id="id" placeholder={aModificar.id} value={id} onChange={(event) => setId(event.target.value)} />
-                    </div> <br/>
+                    </div> <br />
                     <div className="form-group">
                         <label htmlFor="nombre">Nombre</label>
                         <input type="text" className="form-control" id="nombre" placeholder={aModificar.nombre} value={nombre} onChange={(event) => setNombre(event.target.value)} />

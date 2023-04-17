@@ -15,7 +15,7 @@ export const TablaEstudiante = ({listaEstudiantes, editar, eliminar, filtrar}) =
                 </thead>
                 <tbody>
                     {
-                        listaEstudiantes.map((estudiante) =>    
+                        listaEstudiantes.map((estudiante) => 
                             <tr key={estudiante.id}>
                                 <td>{estudiante.id}</td>
                                 <td>{estudiante.nombre}</td>
