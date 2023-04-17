@@ -85,15 +85,25 @@ const estructuraForm = (
         </div>
         <div className="form-group">
             <label htmlFor="semestre">Semestre</label>
-            <input
-              type="number"
-              name="semestre"
-              className="form-control"
-              id="semestre"
-              placeholder={valorSemestre}
-              value={semestre}
-              onChange={(event) => setSemestre(event.target.value)}
-            />
+            <select 
+            name="semestre"
+            className="form-control"
+            id="semestre"
+            placeholder={valorSemestre}
+            value={semestre}
+            onChange={(event) => setSemestre(event.target.value)}
+            >
+                <option >1</option>
+                <option >2</option>
+                <option >3</option>
+                <option >4</option>
+                <option >5</option>
+                <option >6</option>
+                <option >7</option>
+                <option >8</option>
+                <option >9</option>
+                <option >10</option>
+            </select>
         </div>
 
         <button type="submit" className="btn btn-primary">
@@ -111,7 +121,7 @@ if (estado) {
           "id",
           "nombre",
           "semestre",
-          "Resgistrar"
+          "Registrar"
         )}
     </>
     );
