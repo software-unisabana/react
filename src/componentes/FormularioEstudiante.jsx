@@ -7,16 +7,19 @@ export const FormularioEstudiante = ({ agregar, modificar, aModificar, modo } ) 
 
     const guardarEstudiante = (event) => {
         event.preventDefault();
-
         let estudiante = {
             id: id,
             nombre: nombre,
             semestre: semestre
         }
-        agregar(estudiante)
-        setId("");
-        setNombre("");
-        setSemestre("");
+        if(typeof(estudiante.id) === 'number' && (estudiante.id.toString().length >= 6) && (estudiante.id.toString().length <= 10)){
+            agregar(estudiante)
+            setId("");
+            setNombre("");
+            setSemestre("");
+        }else{
+            alert("ID inválido")
+        }
     }
 
     const modificarEstudiante = (event) => {
