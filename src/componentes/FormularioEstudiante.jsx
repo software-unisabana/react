@@ -56,7 +56,7 @@ const estructuraForm = (
     estadoBTN
 ) => {
     return (
-    <>
+    <>  <h1>Parcial Segundo Corte</h1>
         <form onSubmit={dondeGuardar}>
         <div className="form-group ">
             <label htmlFor="id">ID Estudiante</label>
@@ -114,6 +114,7 @@ const estructuraForm = (
             {estadoBTN}
         </button>
         </form>
+        
     </>
     );
 };

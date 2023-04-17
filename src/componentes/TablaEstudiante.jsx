@@ -24,6 +24,7 @@ export const TablaEstudiante = ({eliminarEstudiantes,FiltrolistaEstudiantes, edi
                     }
                 </tbody>
             </table>
-
+            <p className="h6">Trabajo realizado por: Andrés Santiago Santafe Silva, Oscar David Vergara, Hector José Guzmán.</p>
+            <a className="h6" href="https://github.com/SantiagoSantafe/Parcial2docorte_">Link del GitHub</a>
         </>
     )}
