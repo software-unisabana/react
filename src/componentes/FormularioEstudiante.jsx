@@ -1,10 +1,9 @@
+//Use Effect se usa para cargar una cosa solo una vez cuando la pagina inicie. 
 
 import { useEffect, useState } from "react";
 
-export const FormularioEstudiante = ({agregar,estudiante,actEstudiante,estado,setEstado,}) => {
-const [id, setId] = useState("");
-const [nombre, setNombre] = useState("");
-const [semestre, setSemestre] = useState("");
+export const FormularioEstudiante = ({agregar,estudiante,actEstudiante,estado,setEstado,id,setId,nombre,setNombre,semestre,setSemestre}) => {
+
 
 const actualizarEst = (eve) => {
     eve.preventDefault();
@@ -94,7 +93,7 @@ const estructuraForm = (
             name="semestre"
             className="form-control"
             id="semestre"
-            placeholder={valorSemestre}
+            placeholder={"semestre"}
             value={semestre}
             onChange={(event) => setSemestre(event.target.value)}
             >
