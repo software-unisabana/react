@@ -89,6 +89,8 @@ const estructuraForm = (
         <div className="form-group">
             <label htmlFor="semestre">Semestre</label>
             <select 
+            class="form-select"
+            aria-label="Default select example"
             name="semestre"
             className="form-control"
             id="semestre"
