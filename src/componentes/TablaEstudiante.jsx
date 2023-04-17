@@ -11,7 +11,9 @@ export const TablaEstudiante = ({
             <th scope="col">Id estudiante</th>
             <th scope="col">Nombre</th>
             <th scope="col">Semestre</th>
+            <th scope="col">Facultad</th>
             <th scope="col">Acciones</th>
+          
           </tr>
         </thead>
         <tbody>
