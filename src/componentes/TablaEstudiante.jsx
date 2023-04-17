@@ -112,8 +112,7 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
                   <td>{estudiante.semestre}</td>
                   <td>{estudiante.facultad}</td>
                   <td>
-                    <button className="btn btn-info" onClick={editar}> Editar
-                    </button>
+                   
                   </td>
                   <td>
                     <button className="btn btn-danger" onClick={deleteRow}> Eliminar
