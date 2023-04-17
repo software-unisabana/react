@@ -18,6 +18,11 @@ export const FormularioEstudiante = ({ agregar}) => {
             alert("El ID debe tener minimo 6 y maximo 10")
             return;
         }
+        if (nombre.length < 3){
+            alert("El nombre debe tener minimo 3 letras")
+            return;
+        }
+
 
         let estudiante = {
             id: id,
