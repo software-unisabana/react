@@ -3,7 +3,7 @@ export const FormularioEstudiante = ({ agregar, dato, setDato }) => {
 
     const guardarEstudiante = (event) => {
         event.preventDefault();
-        //agregar(dato)
+        agregar(dato)
         setDato({
             id: "",
             nombre: "",
@@ -20,7 +20,7 @@ export const FormularioEstudiante = ({ agregar, dato, setDato }) => {
                         <label htmlFor="id">ID Estudiante</label>
                     </div>
                     <div className="col-2 ">
-                        <input type="id" className="form-control" id="id" placeholder="Id" value={dato.id} onChange={(event) => setDato({ ...dato, id: event.target.value })} />
+                        <input type="text" pattern="[0-9]+" required={true}  minLength={6} maxLength={10} className="form-control" id="id" placeholder="Id" value={dato.id} onChange={(event) => setDato({ ...dato, id: event.target.value })} />
                     </div>
                 </div>
                 <div className="row">
@@ -28,7 +28,7 @@ export const FormularioEstudiante = ({ agregar, dato, setDato }) => {
                         <label htmlFor="nombre">Nombre</label>
                     </div>
                     <div className="col-2 ">
-                        <input type="text" className="form-control" id="nombre" placeholder="Nombre Estudiante" value={dato.nombre} onChange={(event) => setDato({ ...dato, nombre: event.target.value })} />
+                        <input type="text" required={true} minLength={3} className="form-control" id="nombre" placeholder="Nombre Estudiante" value={dato.nombre} onChange={(event) => setDato({ ...dato, nombre: event.target.value })} />
                     </div>
                 </div>
                 <div className="row">
@@ -36,7 +36,7 @@ export const FormularioEstudiante = ({ agregar, dato, setDato }) => {
                         <label htmlFor="semestre">Semestre</label>
                     </div>
                     <div className="col-2 ">
-                        <select label="Semestre" value={dato.semestre} onChange={(event) => setDato({ ...dato, semestre: event.target.value })} className="form-control" id="semestre">
+                        <select label="Semestre" required={true} value={dato.semestre} onChange={(event) => setDato({ ...dato, semestre: event.target.value })} className="form-control" id="semestre">
                             <option value="">Seleccione...</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -56,7 +56,7 @@ export const FormularioEstudiante = ({ agregar, dato, setDato }) => {
                         <label htmlFor="facultad">Facultad</label>
                     </div>
                     <div className="col-2 ">
-                        <select label="Facultad" value={dato.facultad} onChange={(event) => setDato({ ...dato, facultad: event.target.value })} className="form-control" id="facultad">
+                        <select label="Facultad" required={true} value={dato.facultad} onChange={(event) => setDato({ ...dato, facultad: event.target.value })} className="form-control" id="facultad">
                             <option value="">Seleccione...</option>
                             <option value="Ingenieria">Ingenieria</option>
                             <option value="Medicina">Medicina</option>
