@@ -7,7 +7,7 @@ import { TablaEstudiante } from "./componentes/TablaEstudiante";
 export const EstudiantesApp = () => {
 
     const [estudiantes, setEstudiantes] = useState([]);
-    const [dato, setDato] = useState({ id: "", nombre: "", semestre: "" });
+    const [dato, setDato] = useState({ id: "", nombre: "", semestre: "", facultad: "" });
 
     const agregarEstudiante = (estudiante) => {
         setEstudiantes([...estudiantes, estudiante])
