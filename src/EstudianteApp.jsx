@@ -10,7 +10,8 @@ export const EstudiantesApp = () => {
     const [estudianteAct,setEstudianteACT]=useState([]);
     const [id, setId] = useState("");
     const [nombre, setNombre] = useState("");
-    const [semestre, setSemestre] = useState("");
+    const [semestre, setSemestre] = useState(1);
+    const [facultad,setFacultad]=useState("");
 
     const agregarEstudiante = (estudiante) => {
         let verificacion=true
@@ -69,6 +70,8 @@ export const EstudiantesApp = () => {
             setNombre={(nombre)=>setNombre(nombre)}
             semestre={semestre}
             setSemestre={(semestre)=>setSemestre(semestre)}
+            facultad={facultad}
+            setFacultad={(facultad)=>setFacultad(facultad)}
             />            
             <Buscador 
             buscar={buscar} 
@@ -81,6 +84,7 @@ export const EstudiantesApp = () => {
                 setId(estudiante.id)
                 setNombre(estudiante.nombre)
                 setSemestre(estudiante.semestre)
+                setFacultad(estudiante.facultad)
                 setEstudianteACT(estudiante)
             }}
             />
