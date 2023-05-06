@@ -138,6 +138,7 @@ if (estado) {
           estudiante.id,
           estudiante.nombre,
           estudiante.semestre,
+          estudiante.facultad,
           "Actualizar"
         )}
     </>
