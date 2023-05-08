@@ -1,7 +1,9 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { FormularioEstudiante } from "./componentes/FormularioEstudiante";
 import { TablaEstudiante } from "./componentes/TablaEstudiante";
 import { Buscador } from "./componentes/Buscador";
+import { getEstudiantes } from "./peticiones/getEstudiantes";
+import { postEstudiante } from "./peticiones/postEstudiantes";
 export const EstudiantesApp = () => {
 
     const [estudiantes, setEstudiantes] = useState([]);
@@ -11,7 +13,17 @@ export const EstudiantesApp = () => {
     const [id, setId] = useState("");
     const [nombre, setNombre] = useState("");
     const [semestre, setSemestre] = useState(1);
-    const [facultad,setFacultad]=useState("");
+    const [facultad,setFacultad]=useState();
+    const[genero,setGenero]=useState();
+
+    const cargeEstudiantes=async()=>{
+        const datos=await getEstudiantes();
+        console.log(datos)
+        setEstudiantes(datos)
+    }
+    useEffect(()=>{
+        cargeEstudiantes();
+    },[])
 
     const agregarEstudiante = (estudiante) => {
         let verificacion=true
@@ -25,6 +37,7 @@ export const EstudiantesApp = () => {
         });
         if (verificacion) {
             setEstudiantes([...estudiantes, estudiante])
+            postEstudiante(estudiante)
         }
     }
     const VerificarEstudiante = (estudianteAnterior, estudianteACTUALIZADO) => {
@@ -42,6 +55,7 @@ export const EstudiantesApp = () => {
                         estudiante.id = estudianteACTUALIZADO.id
                         estudiante.nombre = estudianteACTUALIZADO.nombre
                         estudiante.semestre = estudianteACTUALIZADO.semestre
+                        estudiante.genero=estudianteACTUALIZADO.genero
                     }
                     return(estudiante)
                 })
@@ -72,6 +86,8 @@ export const EstudiantesApp = () => {
             setSemestre={(semestre)=>setSemestre(semestre)}
             facultad={facultad}
             setFacultad={(facultad)=>setFacultad(facultad)}
+            genero={genero}
+            setGenero={(genero)=> setGenero(genero)}
             />            
             <Buscador 
             buscar={buscar} 
@@ -85,6 +101,7 @@ export const EstudiantesApp = () => {
                 setNombre(estudiante.nombre)
                 setSemestre(estudiante.semestre)
                 setFacultad(estudiante.facultad)
+                setGenero(estudiante.genero)
                 setEstudianteACT(estudiante)
             }}
             />

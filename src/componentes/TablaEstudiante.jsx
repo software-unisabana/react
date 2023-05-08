@@ -12,6 +12,7 @@ export const TablaEstudiante = ({
             <th scope="col">Nombre</th>
             <th scope="col">Semestre</th>
             <th scope="col">Facultad</th>
+            <th scope="col">genero</th>
             <th scope="col">Acciones</th>
           
           </tr>
@@ -23,6 +24,7 @@ export const TablaEstudiante = ({
               <td>{estudiante.nombre}</td>
               <td>{estudiante.semestre}</td>
               <td>{estudiante.facultad}</td>
+              <td>{estudiante.genero}</td>
               <td>
                 {" "}
                 <button

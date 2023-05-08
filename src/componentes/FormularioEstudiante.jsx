@@ -3,17 +3,14 @@
 import { useEffect, useState } from "react";
  
 
-export const FormularioEstudiante = ({agregar,estudiante,actEstudiante,estado,setEstado,id,setId,nombre,setNombre,semestre,setSemestre,facultad,setFacultad}) => {
+export const FormularioEstudiante = ({agregar,estudiante,actEstudiante,estado,setEstado,id,setId,nombre,setNombre,semestre,setSemestre,facultad,setFacultad,genero,setGenero}) => {
     
 
 
 
 
 const actualizarEst = (eve) => {
-    eve.preventDefault();
-    if (id === "") {
-    return alert("INGRESE UN VALOR EN ID");
-    }
+    
     if (nombre === "") {
     return alert("INGRESE UN VALOR EN NOMBRE");
     }
@@ -28,19 +25,17 @@ const actualizarEst = (eve) => {
     nombre: nombre,
     semestre: semestre,
     facultad: facultad,
+    genero: genero,
     };
     actEstudiante(estudiante, estudianteNuevo);
     setId("");
     setNombre("");
     setSemestre("");
     setFacultad("");
+    setGenero("")
     setEstado(!estado);
 };
 const guardarEstudiante = (event) => {
-    event.preventDefault();
-    if (id == "") {
-    return alert("INGRESE UN VALOR EN ID");
-    }
     if (nombre == "") {
     return alert("INGRESE UN VALOR EN NOMBRE");
     }
@@ -55,37 +50,27 @@ const guardarEstudiante = (event) => {
     nombre: nombre,
     semestre: semestre,
     facultad: facultad,
+    genero: genero,
     };
     agregar(estudiante);
     setId("");
     setNombre("");
     setSemestre("");
     setFacultad("");
+    setGenero("");
 };
 const estructuraForm = (
     dondeGuardar,
-    valorID,
     valorNombre,
     valorSemestre,
+    valorFacultad,
+    valorGenero,
     estadoBTN
 ) => {
     return (
     <>  <h1>Parcial Segundo Corte</h1>
         <form onSubmit={dondeGuardar}>
-        <div className="form-group ">
-            <label htmlFor="id">ID Estudiante</label>
-            <input
-              type="number"
-              name="id"
-              min={100000}
-              max={10000000000}
-              className="form-control"
-              id="id"
-              placeholder={valorID}
-              value={id}
-              onChange={(event) => setId(event.target.value)}
-            />
-        </div>
+        
         <div className="form-group">
             <label htmlFor="nombre">Nombre</label>
             <input
@@ -130,13 +115,28 @@ const estructuraForm = (
                name="facultad"
                className="form-control"
                id="facultad"
-               placeholder={"facultad"}
+               placeholder={valorFacultad}
                value={facultad}
                onChange={(event) => setFacultad(event.target.value)}>
                 <option >Medicina</option>
                 <option >Derecho</option>
                 <option >Ingeniería</option>
                 <option >Comunicación</option>
+
+             </select>
+             <label htmlFor="facultad">Genero</label>
+             <select
+             
+               class="form-select"
+               aria-label="Default select example"
+               name="genero"
+               className="form-control"
+               id="genero"
+               placeholder={valorGenero}
+               value={genero}
+               onChange={(event) => setGenero(event.target.value)}>
+                <option >Masculino</option>
+                <option >Femenino</option>
 
              </select>
         </div>
@@ -156,10 +156,11 @@ if (estado) {
     <>
         {estructuraForm(
           guardarEstudiante,
-          "id",
           "nombre",
           "semestre",
-          "Registrar"
+          "facultad",
+          "genero",
+          "Registrar",
         )}
     </>
     );
@@ -168,10 +169,10 @@ if (estado) {
     <>
         {estructuraForm(
           actualizarEst,
-          estudiante.id,
           estudiante.nombre,
           estudiante.semestre,
           estudiante.facultad,
+          estudiante.genero,
           "Actualizar"
         )}
     </>
