@@ -1,6 +1,8 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { FormularioEstudiante } from "./componentes/FormularioEstudiante";
 import { TablaEstudiante } from "./componentes/TablaEstudiante";
+import { getEstudiantes } from "./peticiones/getEstudiantes";
+import { postEstudiantes } from "./peticiones/postEstudiante";
 
 
 
@@ -11,10 +13,10 @@ export const EstudiantesApp = () => {
     const [estudiantes, setEstudiantes] = useState([]);
     const [tablaEstudiantes, setTablaEstudiantes] = useState([]);
     const [buscar, setBuscar] = useState("");
-    console.log(estudiantes);
 
     const agregarEstudiante = (estudiante) => {
-        setEstudiantes([...estudiantes, estudiante])
+        setEstudiantes([...estudiantes, estudiante]);
+        postEstudiantes(estudiante);
     }
     const borrarEstudiante = (id) => {
         let opcion = window.confirm("¿Realmente desea borrar al estudiante?")
@@ -24,6 +26,16 @@ export const EstudiantesApp = () => {
             setEstudiantes(nuevaLista)
         }
     }
+
+    const cargueEstudiantes = async () => {
+        const datos = await getEstudiantes();
+        setEstudiantes(datos);
+    }
+
+    
+    useEffect(() => {
+        cargueEstudiantes();
+    });
 
     const filtrarEstudiante = (event) => {
         event.preventDefault();
