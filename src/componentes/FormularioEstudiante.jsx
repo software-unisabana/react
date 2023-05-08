@@ -80,6 +80,16 @@ export const FormularioEstudiante = ({ agregar}) => {
                     <option value="Derecho">Derecho</option>
                     </select>
                 </div>
+                <div className="form-group">
+                    <label htmlFor="genero">Genero</label>
+                    <br></br>
+                    <select ClassName="form-control" id="genero" placeholder="genero" value={genero} onChange={(event) => setGenero(event.target.value)}>
+                    <option value="">--Seleccione su genero--</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                    <option value="No decirlo">No decirlo</option>
+                    </select>
+                </div>
                 <button type="submit" className="btn btn-primary">Registrar</button>
             </form>
         </>
