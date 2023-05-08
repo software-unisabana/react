@@ -8,7 +8,8 @@ const estudianteList = data.map(estudiante => ({
   id : estudiante.codigo,
   nombre : estudiante.nombre,
   semestre : estudiante.semestre,
-  facultad : 'no definido'
+  facultad : estudiante.facultad,
+  genero : estudiante.genero
 }))
 return estudianteList;
 }
