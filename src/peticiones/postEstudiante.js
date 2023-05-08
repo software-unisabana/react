@@ -7,6 +7,6 @@ export const postEstudiante = async (estudiante) => {
         }, 
         body: JSON.stringify(estudiante)
     })
-    const data = await resp.json();
-    console
+    const respuesta = await resp.json();
+    console.log(respuesta);
     }
