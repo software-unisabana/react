@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 export const TablaEstudiante = ({ listaEstudiantes }) => {
+  
   // const [buscarName, setBuscarName] = useState("");
   const [buscarFac, setBuscarFac] = useState("");
   // const [estudianteEncontradoName, setEstudianteEncontradoName] = useState(null);
