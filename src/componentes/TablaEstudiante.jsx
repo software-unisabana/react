@@ -1,7 +1,8 @@
 
 
-export const TablaEstudiante = ({listaEstudiantes, borrarEstudiante }) => {
+export const TablaEstudiante =  ({listaEstudiantes, borrarEstudiante }) => {
       
+   
 
     return (
         <>
@@ -11,8 +12,8 @@ export const TablaEstudiante = ({listaEstudiantes, borrarEstudiante }) => {
                         <th scope="col">Id Estudiante</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Semestre</th>
-                        <th scope="col">Acciones</th>
                         <th scope="col">Facultad</th>
+                        <th scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
