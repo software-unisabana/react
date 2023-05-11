@@ -13,9 +13,9 @@ export const EstudiantesApp = () => {
     const [id, setId] = useState("");
     const [nombre, setNombre] = useState("");
     const [semestre, setSemestre] = useState(1);
-    const [facultad,setFacultad]=useState();
-    const[genero,setGenero]=useState();
-
+    const [facultad,setFacultad]=useState("Medicina");
+    const[genero,setGenero]=useState("Masculino");
+    const[programa,setPrograma]=useState("Ing.Informatica")
     const cargeEstudiantes=async()=>{
         const datos=await getEstudiantes();
         console.log(datos)
@@ -55,7 +55,9 @@ export const EstudiantesApp = () => {
                         estudiante.id = estudianteACTUALIZADO.id
                         estudiante.nombre = estudianteACTUALIZADO.nombre
                         estudiante.semestre = estudianteACTUALIZADO.semestre
+                        estudiante.facultad =estudianteACTUALIZADO.facultad
                         estudiante.genero=estudianteACTUALIZADO.genero
+                        estudiante.programa=estudianteACTUALIZADO.programa
                     }
                     return(estudiante)
                 })
@@ -66,7 +68,7 @@ export const EstudiantesApp = () => {
         setEstudiantes(estudiantes.filter((estudiante) => estudiante.id!==estuia.id))
     }
     const FiltrolistaEstudiantes= estudiantes.filter((estudiante) =>
-    estudiante.nombre.toLowerCase().includes(buscar.toLowerCase())
+    estudiante.facultad.toLowerCase().includes(buscar.toLowerCase())
     );
 
         
@@ -88,6 +90,8 @@ export const EstudiantesApp = () => {
             setFacultad={(facultad)=>setFacultad(facultad)}
             genero={genero}
             setGenero={(genero)=> setGenero(genero)}
+            programa={programa}
+            setPrograma={(programa)=>setPrograma(programa)}
             />            
             <Buscador 
             buscar={buscar} 
@@ -102,6 +106,7 @@ export const EstudiantesApp = () => {
                 setSemestre(estudiante.semestre)
                 setFacultad(estudiante.facultad)
                 setGenero(estudiante.genero)
+                setPrograma(estudiante.programa)
                 setEstudianteACT(estudiante)
             }}
             />

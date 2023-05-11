@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
  
 
-export const FormularioEstudiante = ({agregar,estudiante,actEstudiante,estado,setEstado,id,setId,nombre,setNombre,semestre,setSemestre,facultad,setFacultad,genero,setGenero}) => {
+export const FormularioEstudiante = ({agregar,estudiante,actEstudiante,estado,setEstado,id,setId,nombre,setNombre,semestre,setSemestre,facultad,setFacultad,genero,setGenero,programa,setPrograma}) => {
     
 
 
@@ -26,6 +26,7 @@ const actualizarEst = (eve) => {
     semestre: semestre,
     facultad: facultad,
     genero: genero,
+    programa:programa
     };
     actEstudiante(estudiante, estudianteNuevo);
     setId("");
@@ -33,6 +34,7 @@ const actualizarEst = (eve) => {
     setSemestre("");
     setFacultad("");
     setGenero("")
+    setPrograma("")
     setEstado(!estado);
 };
 const guardarEstudiante = (event) => {
@@ -51,6 +53,7 @@ const guardarEstudiante = (event) => {
     semestre: semestre,
     facultad: facultad,
     genero: genero,
+    programa:programa
     };
     agregar(estudiante);
     setId("");
@@ -65,6 +68,7 @@ const estructuraForm = (
     valorSemestre,
     valorFacultad,
     valorGenero,
+    valorPrograma,
     estadoBTN
 ) => {
     return (
@@ -139,6 +143,30 @@ const estructuraForm = (
                 <option >Femenino</option>
 
              </select>
+             <label htmlFor="programa">Programa</label>
+             <select
+             
+               class="form-select"
+               aria-label="Default select example"
+               name="programa"
+               className="form-control"
+               id="programa"
+               placeholder={valorPrograma}
+               value={programa}
+               onChange={(event) => setPrograma(event.target.value)}>
+                <option >Ing.Informatica</option>
+                <option >Ing.Civil</option>
+                <option >Ing.Quimica</option>
+                <option >Ing.Mecanica</option>
+                <option >Ing.Agroindustrial</option>
+                <option >Medicina</option>
+                <option >Derecho Civil</option>
+                <option >Derecho penal</option>
+                <option >Comunicación Audiovisual</option>
+                <option >Comunicación Social</option>
+                <option >Comunicación corporativa</option>
+             </select>
+             
         </div>
 
 
@@ -160,6 +188,7 @@ if (estado) {
           "semestre",
           "facultad",
           "genero",
+          "programa",
           "Registrar",
         )}
     </>
@@ -173,6 +202,7 @@ if (estado) {
           estudiante.semestre,
           estudiante.facultad,
           estudiante.genero,
+          estudiante.programa,
           "Actualizar"
         )}
     </>

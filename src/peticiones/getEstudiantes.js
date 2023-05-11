@@ -8,6 +8,7 @@ export const getEstudiantes=async()=>{
         semestre:estudiante.semestre,
         facultad:estudiante.facultad,
         genero:estudiante.genero,
+        programa:estudiante.programa
      }))
      return estudianteList;
 }
