@@ -3,64 +3,69 @@ import { FormularioEstudiante } from "./componentes/FormularioEstudiante";
 import { TablaEstudiante } from "./componentes/TablaEstudiante";
 import { getEstudiantes } from "./peticiones/getEstudiantes";
 import { postEstudiantes } from "./peticiones/postEstudiante";
+import { deleteEstudiante } from "./peticiones/deleteEstudiante";
+import { getFacultadEstudiantes } from "./peticiones/getFacultadEstudiantes";
 
 
 
 //<ListaEstudiantes lista={estudiantes}/>
 
 export const EstudiantesApp = () => {
-
     const [estudiantes, setEstudiantes] = useState([]);
-    const [tablaEstudiantes, setTablaEstudiantes] = useState([]);
-    const [buscar, setBuscar] = useState("");
-
-    const agregarEstudiante = (estudiante) => {
-        setEstudiantes([...estudiantes, estudiante]);
-        postEstudiantes(estudiante);
-    }
-    const borrarEstudiante = (id) => {
-        let opcion = window.confirm("¿Realmente desea borrar al estudiante?")
-
-        if(opcion){
-            let nuevaLista = estudiantes.filter(estudiantes => estudiantes.id !== id)
-            setEstudiantes(nuevaLista)
-        }
-    }
+    const [facultadBuscar, setFacultadBuscar] = useState("");
 
     const cargueEstudiantes = async () => {
         const datos = await getEstudiantes();
         setEstudiantes(datos);
     }
-
-    
     useEffect(() => {
-        cargueEstudiantes();
+        if(facultadBuscar.length > 1){
+            console.log("facultadBuscar")
+        }else{
+            cargueEstudiantes();
+            console.log("hola")
+        }
     });
 
-    const filtrarEstudiante = (event) => {
-        event.preventDefault();
-        if(buscar.trim().length >= 1){
-            let busqueda = estudiantes.filter((estudiante) =>{
-                if(estudiante.nombre.toUpperCase().includes(buscar.toUpperCase())){
-                    return estudiante;
-                }
-            })
-            setTablaEstudiantes([...estudiantes]);
-            setEstudiantes([...busqueda]);
-            console.log(busqueda)
-        }else{
-            setEstudiantes([...tablaEstudiantes]);
-        }
+    const agregarEstudiante = (estudiante) => {
+        setEstudiantes([...estudiantes, estudiante]);
+        postEstudiantes(estudiante);
+    }
 
+    const borrarEstudiante = (id) => {
+        let opcion = window.confirm("¿Realmente desea borrar al estudiante?")
+
+        if(opcion){
+            deleteEstudiante(id);
+        }
+        
+    }
+
+    const buscarEstudianteFacultad = async (event) => {
+        event.preventDefault();
+        if(facultadBuscar.length > 1){
+            const datos = await getFacultadEstudiantes(facultadBuscar);
+            setEstudiantes(datos);
+            console.log(datos);
+        }else{
+            cargueEstudiantes();
+        }
     }
 
     return (
         <>
             <FormularioEstudiante agregar={(estu) => { agregarEstudiante(estu) }} />
-            <form onSubmit={filtrarEstudiante}>
+            <form onSubmit={buscarEstudianteFacultad}>
                 <div>
                     <label htmlFor="search">Buscar:</label>
-                    <input type="text" className="form-control" id="search" placeholder="Ingrese nombre a buscar" value={buscar} onChange={(event) => setBuscar(event.target.value)} />
+                    <select name="facultadBuscar" id="facultadBuscar" value={facultadBuscar} className="form-select" aria-label="Default select example" onChange={(event) =>  {setFacultadBuscar(event.target.value)}}>
+                        <option value=""></option>
+                        <option value="Comunicacion">Comunicacion</option>
+                        <option value="Derecho">Derecho</option>
+                        <option value="Educacion">Educacion</option>
+                        <option value="Ingenieria">Ingenieria</option>
+                        <option value="Medicina">Medicina</option>
+                    </select>
                     <button type="submit" className="btn btn-primary">Buscar</button>
                 </div>
             </form>
