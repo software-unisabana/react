@@ -4,6 +4,8 @@ import { TablaEstudiante } from "./componentes/TablaEstudiante";
 import { Buscador } from "./componentes/Buscador";
 import { getEstudiantes } from "./peticiones/getEstudiantes";
 import { postEstudiante } from "./peticiones/postEstudiantes";
+import { eliminarEstudiantes } from "./peticiones/deleteEstudiante";
+
 export const EstudiantesApp = () => {
 
     const [estudiantes, setEstudiantes] = useState([]);
@@ -66,11 +68,11 @@ export const EstudiantesApp = () => {
     }
     const eliminar=(estuia)=>{
         setEstudiantes(estudiantes.filter((estudiante) => estudiante.id!==estuia.id))
+        eliminarEstudiantes(estuia.id);
     }
     const FiltrolistaEstudiantes= estudiantes.filter((estudiante) =>
     estudiante.facultad.toLowerCase().includes(buscar.toLowerCase())
     );
-
         
     return (
         <>
