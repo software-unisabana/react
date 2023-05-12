@@ -4,6 +4,7 @@ export const FormularioEstudiante = ({ agregar , buscarName }) => {
     const [nombre, setNombre] = useState("");
     const [semestre, setSemestre] = useState("");
     const [facultad , setFacultad] = useState("")
+    const [programa , setPrograma] = useState("")
     
 
     const guardarEstudiante = (event) => {
@@ -12,7 +13,8 @@ export const FormularioEstudiante = ({ agregar , buscarName }) => {
         let estudiante = {
             nombre: nombre,
             semestre: semestre,
-            facultad: facultad
+            facultad: facultad,
+            programa: programa
         }
 
         agregar(estudiante)
@@ -55,6 +57,10 @@ export const FormularioEstudiante = ({ agregar , buscarName }) => {
                         <option value="Ingenieria">Ingenieria</option>
                         <option value="Medicina">Medicina</option>
                     </select>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="programa">Programa:</label>
+                    <input type="text" className="form-control" id="programa" placeholder="programa" value={programa} onChange={(event) => setPrograma(event.target.value)} />
                 </div>
                 <br />
                 <button type="submit" className="btn btn-primary">Registrar</button>

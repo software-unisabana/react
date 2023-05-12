@@ -13,6 +13,7 @@ export const TablaEstudiante =  ({listaEstudiantes, borrarEstudiante }) => {
                         <th scope="col">Nombre</th>
                         <th scope="col">Semestre</th>
                         <th scope="col">Facultad</th>
+                        <th scope="col">Programa</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
@@ -23,6 +24,7 @@ export const TablaEstudiante =  ({listaEstudiantes, borrarEstudiante }) => {
                             <td>{estudiante.nombre}</td>
                             <td>{estudiante.semestre}</td>
                             <td>{estudiante.facultad}</td>
+                            <td>{estudiante.programa}</td>
                             <td> 
                             <button className="btn btn-info">Editar</button> 
                             <button className="btn btn-danger" onClick={()=>borrarEstudiante(estudiante.id)}>Eliminar</button>

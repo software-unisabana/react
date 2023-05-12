@@ -8,7 +8,8 @@ export const getEstudiantes = async() => {
         id: estudiante.id,
         nombre: estudiante.nombre,
         semestre: estudiante.semestre,
-        facultad: estudiante.facultad
+        facultad: estudiante.facultad,
+        programa: estudiante.programa
     }))
     return estudiantesList;
 }
