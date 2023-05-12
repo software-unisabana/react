@@ -47,7 +47,8 @@ export const FormularioEstudiante = ({
     setGenero("");
     setPrograma("");
     setEstado(!estado);
-  };
+      
+};
   const guardarEstudiante = (event) => {
     if (nombre == "") {
       return alert("INGRESE UN VALOR EN NOMBRE");

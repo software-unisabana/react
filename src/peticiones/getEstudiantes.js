@@ -10,5 +10,5 @@ export const getEstudiantes=async()=>{
         genero:estudiante.genero,
         programa:estudiante.programa
      }))
-     return estudianteList;
+    return estudianteList;
 }
