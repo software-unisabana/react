@@ -3,6 +3,7 @@ import { FormularioEstudiante } from "./componentes/FormularioEstudiante";
 import { TablaEstudiante } from "./componentes/TablaEstudiante";
 import { getEstudiantes } from "./peticiones/getEstudiantes";
 import { postEstudiantes } from "./peticiones/postEstudiante";
+import { deleteEstudiante } from "./peticiones/deleteEstudiante";
 
 
 
@@ -22,9 +23,9 @@ export const EstudiantesApp = () => {
         let opcion = window.confirm("¿Realmente desea borrar al estudiante?")
 
         if(opcion){
-            let nuevaLista = estudiantes.filter(estudiantes => estudiantes.id !== id)
-            setEstudiantes(nuevaLista)
+            deleteEstudiante(id);
         }
+        
     }
 
     const cargueEstudiantes = async () => {
