@@ -4,6 +4,7 @@ import { TablaEstudiante } from "./componentes/TablaEstudiante";
 import { Buscador } from "./componentes/Buscador";
 import { getEstudiantes } from "./peticiones/getEstudiantes";
 import { postEstudiante } from "./peticiones/postEstudiantes";
+import { getActualizar } from "./peticiones/getActualizar";
 export const EstudiantesApp = () => {
 
     const [estudiantes, setEstudiantes] = useState([]);
@@ -49,6 +50,7 @@ export const EstudiantesApp = () => {
             } 
         }) 
         if (validacion) {
+            getActualizar(estudianteAnterior.id,estudianteACTUALIZADO)
             setEstudiantes(
                 estudiantes.map((estudiante) => {
                     if(estudianteAnterior.id == estudiante.id){
@@ -60,8 +62,7 @@ export const EstudiantesApp = () => {
                         estudiante.programa=estudianteACTUALIZADO.programa
                     }
                     return(estudiante)
-                })
-            )
+                }))
         }
     }
     const eliminar=(estuia)=>{

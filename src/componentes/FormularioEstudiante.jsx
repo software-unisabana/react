@@ -1,6 +1,7 @@
 //Use Effect se usa para cargar una cosa solo una vez cuando la pagina inicie. 
 
 import { useEffect, useState } from "react";
+
  
 
 export const FormularioEstudiante = ({agregar,estudiante,actEstudiante,estado,setEstado,id,setId,nombre,setNombre,semestre,setSemestre,facultad,setFacultad,genero,setGenero,programa,setPrograma}) => {
@@ -35,6 +36,7 @@ const actualizarEst = (eve) => {
     setGenero("")
     setPrograma("")
     setEstado(!estado);
+    
 };
 const guardarEstudiante = (event) => {
     if (nombre == "") {
