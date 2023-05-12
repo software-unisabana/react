@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
  
 
 export const FormularioEstudiante = ({agregar,estudiante,actEstudiante,estado,setEstado,id,setId,nombre,setNombre,semestre,setSemestre,facultad,setFacultad,genero,setGenero,programa,setPrograma}) => {
-    
 
 
 
